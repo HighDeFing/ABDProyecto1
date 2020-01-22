@@ -7,14 +7,24 @@
 </head>
 <body>
 
-<div>First Query</div>
-<button id="button_1" class="button">Click Me!</button>
+<div>Listar el nombre de los índices, las columnas que indexa y la tabla indexada.</div>
+<button id="button_1" class="button">Enseñar</button>
 <div id="description_button_1">
-    <ul id="navigation">
+    <table style="width:100%">
+  <tr>
+      {% for row in cur.description %}
+        <th>{{ row[0] }}</th>
+       {% endfor %}
+  </tr>
     {% for line in cur %}
-        <li>{{ line }}</li>
+    <tr>
+        {% for rows in line %}
+    <td>{{rows}}</td>
+        {% endfor %}
+  </tr>
     {% endfor %}
-</ul></div>
+</table>
+</div>
 
 <div>Second Query</div>
 <button id="button_2" class="button">Click Me!</button>
