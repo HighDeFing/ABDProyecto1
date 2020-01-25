@@ -4,37 +4,285 @@
     <meta charset="UTF-8">
     <title>Home</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
+
+
+
 </head>
-<body>
-
-<div>Listar el nombre de los índices, las columnas que indexa y la tabla indexada.</div>
-<button id="button_1" class="button">Enseñar</button>
-<div id="description_button_1">
-    <table style="width:100%">
-  <tr>
-      {% for row in cur.description %}
-        <th>{{ row[0] }}</th>
-       {% endfor %}
-  </tr>
-    {% for line in cur %}
-    <tr>
-        {% for rows in line %}
-    <td>{{rows}}</td>
-        {% endfor %}
-  </tr>
-    {% endfor %}
-</table>
+<body class="is-preload">
+<header id="header">
+</header>
+<div id="heading">
+    <img src="{{ url_for('static',filename='images/banner.png') }}">
 </div>
+<section id="main" class="wrapper">
+<div class="inner">
+    <div class="content">
+        <div class="col-6 col-12-medium">
+            <!-- Primera consulta -->
+            <h3>1. Listar el nombre de los índices, las columnas que indexa y la tabla indexada.</h3>
 
-<div>Second Query</div>
-<button id="button_2" class="button">Click Me!</button>
-<div id="description_button_2">
-    <ul id="navigation2">
-    {% for line in other_cur %}
-        <li>{{ line }}</li>
-    {% endfor %}
-</ul></div>
+                <ul class="actions">
+                    <li><a id="button_1" class="button primary">Enseñar / Ocultar</a></li>
+                </ul>
+                <div id="description_button_1" class="table-wrapper">
+                    <table class="alt">
+                      <tr>
+                          <thead>
+                          {% for row in pri.description %}
+                            <th>{{ row[0] }}</th>
+                           {% endfor %}
+                          </thead>
+                      </tr>
+                        {% for line in pri %}
+                        <tr>
+                            {% for rows in line %}
+                        <td>{{rows}}</td>
+                            {% endfor %}
+                      </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            <!-- Primera consulta -->
 
+            <!-- Segunda consulta -->
+            <h3>2. Mostrar las tablas del esquema e indicar cuantos índices tiene asociada esa tabla.</h3>
+
+                <ul class="actions">
+                    <li><a id="button_2" class="button primary">Enseñar / Ocultar</a></li>
+                </ul>
+                <div id="description_button_2" class="table-wrapper">
+                    <table class="alt">
+                      <tr>
+                          <thead>
+                          {% for row in seg.description %}
+                            <th>{{ row[0] }}</th>
+                           {% endfor %}
+                          </thead>
+                      </tr>
+                        {% for line in seg %}
+                        <tr>
+                            {% for rows in line %}
+                        <td>{{rows}}</td>
+                            {% endfor %}
+                      </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            <!-- Segunda consulta -->
+
+            <!-- Tercera consulta -->
+            <h3>3. Indicar las restricciones del esquema, su tipo y la tabla a las que pertenecen.</h3>
+
+                <ul class="actions">
+                    <li><a id="button_3" class="button primary">Enseñar / Ocultar</a></li>
+                </ul>
+                <div id="description_button_3" class="table-wrapper">
+                    <table class="alt">
+                      <tr>
+                          <thead>
+                          {% for row in ter.description %}
+                            <th>{{ row[0] }}</th>
+                           {% endfor %}
+                          </thead>
+                      </tr>
+                        {% for line in ter %}
+                        <tr>
+                            {% for rows in line %}
+                        <td>{{rows}}</td>
+                            {% endfor %}
+                      </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            <!-- Tercera consulta -->
+
+            <!-- Cuarta consulta -->
+            <h3>4. Listar el nombre, tipo, estatus y la tabla asociada de los triggers.</h3>
+
+                <ul class="actions">
+                    <li><a id="button_4" class="button primary">Enseñar / Ocultar</a></li>
+                </ul>
+                <div id="description_button_4" class="table-wrapper">
+                    <table class="alt">
+                      <tr>
+                          <thead>
+                          {% for row in cua.description %}
+                            <th>{{ row[0] }}</th>
+                           {% endfor %}
+                          </thead>
+                      </tr>
+                        {% for line in cua %}
+                        <tr>
+                            {% for rows in line %}
+                        <td>{{rows}}</td>
+                            {% endfor %}
+                      </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            <!-- Cuarta consulta -->
+
+            <!-- Quinta consulta -->
+            <h3>5. Calcular el tamaño de cada columna en bytes.</h3>
+
+            <ul class="actions">
+                <li><a id="button_5" class="button primary">Enseñar / Ocultar</a></li>
+            </ul>
+            <div id="description_button_5" class="table-wrapper">
+                <table class="alt">
+                  <tr>
+                      <thead>
+                      {% for row in qui.description %}
+                        <th>{{ row[0] }}</th>
+                       {% endfor %}
+                      </thead>
+                  </tr>
+                    {% for line in qui %}
+                    <tr>
+                        {% for rows in line %}
+                    <td>{{rows}}</td>
+                        {% endfor %}
+                  </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <!-- Quinta consulta -->
+
+            <!-- Sexta consulta -->
+            <h3>6. Calcular el tamaño de cada registro en bytes.</h3>
+
+            <ul class="actions">
+                <li><a id="button_6" class="button primary">Enseñar / Ocultar</a></li>
+            </ul>
+            <div id="description_button_6" class="table-wrapper">
+                <table class="alt">
+                  <tr>
+                      <thead>
+                      {% for row in sex.description %}
+                        <th>{{ row[0] }}</th>
+                       {% endfor %}
+                      </thead>
+                  </tr>
+                    {% for line in sex %}
+                    <tr>
+                        {% for rows in line %}
+                    <td>{{rows}}</td>
+                        {% endfor %}
+                  </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <!-- Sexta consulta -->
+
+            <!-- Septima consulta -->
+            <h3>7. Indicar el tamaño de las tablas en bloques</h3>
+
+            <ul class="actions">
+                <li><a id="button_7" class="button primary">Enseñar / Ocultar</a></li>
+            </ul>
+            <div id="description_button_7" class="table-wrapper">
+                <table class="alt">
+                  <tr>
+                      <thead>
+                      {% for row in sep.description %}
+                        <th>{{ row[0] }}</th>
+                       {% endfor %}
+                      </thead>
+                  </tr>
+                    {% for line in sep %}
+                    <tr>
+                        {% for rows in line %}
+                    <td>{{rows}}</td>
+                        {% endfor %}
+                  </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <!-- Septima consulta -->
+
+            <!-- Octava consulta -->
+             <h3>8. Listar los nombres de los procedimientos del esquema</h3>
+
+            <ul class="actions">
+                <li><a id="button_8" class="button primary">Enseñar / Ocultar</a></li>
+            </ul>
+            <div id="description_button_8" class="table-wrapper">
+                <table class="alt">
+                  <tr>
+                      <thead>
+                      {% for row in oct.description %}
+                        <th>{{ row[0] }}</th>
+                       {% endfor %}
+                      </thead>
+                  </tr>
+                    {% for line in oct %}
+                    <tr>
+                        {% for rows in line %}
+                    <td>{{rows}}</td>
+                        {% endfor %}
+                  </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <!-- Octava consulta -->
+
+            <!-- Novena consulta -->
+            <h3>9. Calcular el tamaño total de la base de datos en MB.</h3>
+
+            <ul class="actions">
+                <li><a id="button_9" class="button primary">Enseñar / Ocultar</a></li>
+            </ul>
+            <div id="description_button_9" class="table-wrapper">
+                <table class="alt">
+                  <tr>
+                      <thead>
+                      {% for row in nov.description %}
+                        <th>{{ row[0] }}</th>
+                       {% endfor %}
+                      </thead>
+                  </tr>
+                    {% for line in nov %}
+                    <tr>
+                        {% for rows in line %}
+                    <td>{{rows}}</td>
+                        {% endfor %}
+                  </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <!-- Novena consulta -->
+
+            <!-- Decima consulta -->
+            <h3>10. Mostrar el Factor de bloqueo de las tablas e índices.</h3>
+
+            <ul class="actions">
+                <li><a id="button_10" class="button primary">Enseñar / Ocultar</a></li>
+            </ul>
+            <div id="description_button_10" class="table-wrapper">
+                <table class="alt">
+                  <tr>
+                      <thead>
+                      {% for row in dec.description %}
+                        <th>{{ row[0] }}</th>
+                       {% endfor %}
+                      </thead>
+                  </tr>
+                    {% for line in dec %}
+                    <tr>
+                        {% for rows in line %}
+                    <td>{{rows}}</td>
+                        {% endfor %}
+                  </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <!-- Decima consulta -->
+        </div>
+    </div>
+</div>
+</section>
+<!-- Button script -->
 <script>
 $(document).ready(function() {
     $('.button').each(function(){
@@ -45,6 +293,15 @@ $(document).ready(function() {
     });
 });
 </script>
+<!-- Button script -->
+
+<!-- Assest script -->
+<script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/js/browser.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/js/breakpoints.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/js/util.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
+<!-- Assest script -->
 
 
 </body>
