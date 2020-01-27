@@ -13,7 +13,7 @@
 <header id="header">
 </header>
 <div id="heading">
-    <img src="{{ url_for('static',filename='images/banner.png') }}">
+<!--    <img src="{{ url_for('static',filename='images/banner.png') }}">-->
 </div>
 <section id="main" class="wrapper">
 <div class="inner">
@@ -156,22 +156,231 @@
                 <li><a id="button_6" class="button primary">Enseñar / Ocultar</a></li>
             </ul>
             <div id="description_button_6" class="table-wrapper">
-                <table class="alt">
-                  <tr>
-                      <thead>
-                      {% for row in sex.description %}
-                        <th>{{ row[0] }}</th>
-                       {% endfor %}
-                      </thead>
-                  </tr>
-                    {% for line in sex %}
-                    <tr>
-                        {% for rows in line %}
-                    <td>{{rows}}</td>
-                        {% endfor %}
-                  </tr>
-                    {% endfor %}
-                </table>
+            <!--Tabla Batalla-->
+                <h4>A. Tabla Batalla</h4>
+                   <ul class="actions">
+                    <li><a id="button_11" class="button small">Enseñar / Ocultar</a></li>
+                   </ul>
+                       <div id="description_button_11" class="table-wrapper">
+                           <table class="alt">
+                              <tr>
+                                  <thead>
+                                  {% for row in sex_a.description %}
+                                    <th>{{ row[0] }}</th>
+                                   {% endfor %}
+                                  </thead>
+                              </tr>
+                                {% for line in sex_a %}
+                                <tr>
+                                    {% for rows in line %}
+                                <td>{{rows}}</td>
+                                    {% endfor %}
+                              </tr>
+                                {% endfor %}
+                          </table>
+                   </div>
+            <!--Tabla Batalla-->
+
+                <!--Tabla Carta-->
+                <h4>B. Tabla Carta</h4>
+                   <ul class="actions">
+                    <li><a id="button_12" class="button small">Enseñar / Ocultar</a></li>
+                   </ul>
+                       <div id="description_button_12" class="table-wrapper">
+                           <table class="alt">
+                              <tr>
+                                  <thead>
+                                  {% for row in sex_b.description %}
+                                    <th>{{ row[0] }}</th>
+                                   {% endfor %}
+                                  </thead>
+                              </tr>
+                                {% for line in sex_b %}
+                                <tr>
+                                    {% for rows in line %}
+                                <td>{{rows}}</td>
+                                    {% endfor %}
+                              </tr>
+                                {% endfor %}
+                          </table>
+                   </div>
+            <!--Tabla Carta-->
+
+                <!--Tabla Division-->
+                <h4>C. Tabla Division</h4>
+                   <ul class="actions">
+                    <li><a id="button_13" class="button small">Enseñar / Ocultar</a></li>
+                   </ul>
+                       <div id="description_button_13" class="table-wrapper">
+                           <table class="alt">
+                              <tr>
+                                  <thead>
+                                  {% for row in sex_c.description %}
+                                    <th>{{ row[0] }}</th>
+                                   {% endfor %}
+                                  </thead>
+                              </tr>
+                                {% for line in sex_c %}
+                                <tr>
+                                    {% for rows in line %}
+                                <td>{{rows}}</td>
+                                    {% endfor %}
+                              </tr>
+                                {% endfor %}
+                          </table>
+                   </div>
+            <!--Tabla Division-->
+
+                <!--Tabla Invocador-->
+                <h4>D. Tabla Invocador</h4>
+                   <ul class="actions">
+                    <li><a id="button_14" class="button small">Enseñar / Ocultar</a></li>
+                   </ul>
+                       <div id="description_button_14" class="table-wrapper">
+                           <table class="alt">
+                              <tr>
+                                  <thead>
+                                  {% for row in sex_d.description %}
+                                    <th>{{ row[0] }}</th>
+                                   {% endfor %}
+                                  </thead>
+                              </tr>
+                                {% for line in sex_d %}
+                                <tr>
+                                    {% for rows in line %}
+                                <td>{{rows}}</td>
+                                    {% endfor %}
+                              </tr>
+                                {% endfor %}
+                          </table>
+                   </div>
+            <!--Tabla Invocador-->
+
+                <!--Tabla Mazo-->
+                <h4>E. Tabla Mazo</h4>
+                   <ul class="actions">
+                    <li><a id="button_15" class="button small">Enseñar / Ocultar</a></li>
+                   </ul>
+                       <div id="description_button_15" class="table-wrapper">
+                           <table class="alt">
+                              <tr>
+                                  <thead>
+                                  {% for row in sex_e.description %}
+                                    <th>{{ row[0] }}</th>
+                                   {% endfor %}
+                                  </thead>
+                              </tr>
+                                {% for line in sex_e %}
+                                <tr>
+                                    {% for rows in line %}
+                                <td>{{rows}}</td>
+                                    {% endfor %}
+                              </tr>
+                                {% endfor %}
+                          </table>
+                   </div>
+            <!--Tabla Mazo-->
+
+                <!--Tabla Region-->
+                <h4>F. Tabla Region</h4>
+                   <ul class="actions">
+                    <li><a id="button_16" class="button small">Enseñar / Ocultar</a></li>
+                   </ul>
+                       <div id="description_button_16" class="table-wrapper">
+                           <table class="alt">
+                              <tr>
+                                  <thead>
+                                  {% for row in sex_f.description %}
+                                    <th>{{ row[0] }}</th>
+                                   {% endfor %}
+                                  </thead>
+                              </tr>
+                                {% for line in sex_f %}
+                                <tr>
+                                    {% for rows in line %}
+                                <td>{{rows}}</td>
+                                    {% endfor %}
+                              </tr>
+                                {% endfor %}
+                          </table>
+                   </div>
+            <!--Tabla Region-->
+                <!--Tabla Rioter-->
+                <h4>G. Tabla Rioter</h4>
+                   <ul class="actions">
+                    <li><a id="button_17" class="button small">Enseñar / Ocultar</a></li>
+                   </ul>
+                       <div id="description_button_17" class="table-wrapper">
+                           <table class="alt">
+                              <tr>
+                                  <thead>
+                                  {% for row in sex_g.description %}
+                                    <th>{{ row[0] }}</th>
+                                   {% endfor %}
+                                  </thead>
+                              </tr>
+                                {% for line in sex_g %}
+                                <tr>
+                                    {% for rows in line %}
+                                <td>{{rows}}</td>
+                                    {% endfor %}
+                              </tr>
+                                {% endfor %}
+                          </table>
+                   </div>
+            <!--Tabla Rioter-->
+
+                <!--Tabla Servidor-->
+                <h4>H. Tabla Servidor</h4>
+                   <ul class="actions">
+                    <li><a id="button_18" class="button small">Enseñar / Ocultar</a></li>
+                   </ul>
+                       <div id="description_button_18" class="table-wrapper">
+                           <table class="alt">
+                              <tr>
+                                  <thead>
+                                  {% for row in sex_h.description %}
+                                    <th>{{ row[0] }}</th>
+                                   {% endfor %}
+                                  </thead>
+                              </tr>
+                                {% for line in sex_h %}
+                                <tr>
+                                    {% for rows in line %}
+                                <td>{{rows}}</td>
+                                    {% endfor %}
+                              </tr>
+                                {% endfor %}
+                          </table>
+                   </div>
+            <!--Tabla Servidor-->
+
+                <!--Tabla Usuario-->
+                <h4>I. Tabla Usuario</h4>
+                   <ul class="actions">
+                    <li><a id="button_19" class="button small">Enseñar / Ocultar</a></li>
+                   </ul>
+                       <div id="description_button_19" class="table-wrapper">
+                           <table class="alt">
+                              <tr>
+                                  <thead>
+                                  {% for row in sex_i.description %}
+                                    <th>{{ row[0] }}</th>
+                                   {% endfor %}
+                                  </thead>
+                              </tr>
+                                {% for line in sex_i %}
+                                <tr>
+                                    {% for rows in line %}
+                                <td>{{rows}}</td>
+                                    {% endfor %}
+                              </tr>
+                                {% endfor %}
+                          </table>
+                   </div>
+            <!--Tabla Usuario-->
+
+
             </div>
             <!-- Sexta consulta -->
 
@@ -263,12 +472,12 @@
                 <table class="alt">
                   <tr>
                       <thead>
-                      {% for row in dec.description %}
+                      {% for row in dec_a.description %}
                         <th>{{ row[0] }}</th>
                        {% endfor %}
                       </thead>
                   </tr>
-                    {% for line in dec %}
+                    {% for line in dec_a %}
                     <tr>
                         {% for rows in line %}
                     <td>{{rows}}</td>
