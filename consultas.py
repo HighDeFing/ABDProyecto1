@@ -257,9 +257,9 @@ def decima_consulta_a():
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-    SELECT table_name AS "Nombre de la tabla", 8192/avg_row_len AS "Factor de bloqueo de la tabla" 
-    FROM user_tables 
-    ORDER BY table_name
+    SELECT BATALLA.ID AS "ID de batalla", BATALLA.USUARIO1 AS "Invocador 1", BATALLA.USUARIO2 AS "Invocador 2", BATALLA.GANADOR AS "Ganador", Round(8192/(vsize(BATALLA.ID) + vsize(BATALLA.USUARIO1) + vsize(BATALLA.MAZO1) + vsize(BATALLA.USUARIO2) + vsize(BATALLA.MAZO2)+ vsize(BATALLA.GANADOR) + vsize(BATALLA.PUNTOS))) AS "Factor de bloqueo del registro"
+    FROM BATALLA 
+    ORDER BY BATALLA.ID
     """
     cur.execute(consul)
     return cur
@@ -271,9 +271,9 @@ def decima_consulta_b():
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-    SELECT table_name AS "Nombre de la tabla", 8192/avg_row_len AS "Factor de bloqueo de la tabla" 
-    FROM user_tables 
-    ORDER BY table_name
+    SELECT CARTA.ID AS "ID de carta", Round(8192/(vsize(CARTA.ID) + vsize(CARTA.TIPO) + VSIZE(CARTA.NOMBRE) + VSIZE(CARTA.DESCRIPCION) + VSIZE(CARTA.MEJORA) + VSIZE(CARTA.REGION) + VSIZE(CARTA.COSTO) + VSIZE(CARTA.ATAQUE) + VSIZE(CARTA.VIDA) + VSIZE(CARTA.RAREZA) + VSIZE(CARTA.EFECTO) + VSIZE(CARTA.PALABRA_CLAVE))) AS "Factor de bloqueo del registro" 
+    FROM 
+    CARTA ORDER BY CARTA.ID
     """
     cur.execute(consul)
     return cur
@@ -285,9 +285,8 @@ def decima_consulta_c():
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-    SELECT table_name AS "Nombre de la tabla", 8192/avg_row_len AS "Factor de bloqueo de la tabla" 
-    FROM user_tables 
-    ORDER BY table_name
+    SELECT DIVISION.CODIGO AS "Codigo de division", DIVISION.NOMBRE AS "Nombre de division", DIVISION.DESCRIPCION AS "Descripcion de la division", Round(8192/(VSIZE(DIVISION.CODIGO) + VSIZE(DIVISION.NOMBRE) + VSIZE(DIVISION.DESCRIPCION))) AS "Factor de bloqueo del registro" 
+    FROM DIVISION
     """
     cur.execute(consul)
     return cur
@@ -299,9 +298,9 @@ def decima_consulta_d():
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-    SELECT table_name AS "Nombre de la tabla", 8192/avg_row_len AS "Factor de bloqueo de la tabla" 
-    FROM user_tables 
-    ORDER BY table_name
+    SELECT INVOCADOR.USUARIO AS "Usuario", INVOCADOR.NOMBRE_INVOCADOR AS "Nombre de invocador", Round(8192/(VSIZE(INVOCADOR.USUARIO) + VSIZE(INVOCADOR.SERVIDOR) + VSIZE(INVOCADOR.NOMBRE_INVOCADOR) + VSIZE(INVOCADOR.FECHA_CREACION))) AS "Factor de bloqueo del registro" 
+    FROM INVOCADOR 
+    ORDER BY INVOCADOR.USUARIO, INVOCADOR.NOMBRE_INVOCADOR
     """
     cur.execute(consul)
     return cur
@@ -313,9 +312,9 @@ def decima_consulta_e():
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-    SELECT table_name AS "Nombre de la tabla", 8192/avg_row_len AS "Factor de bloqueo de la tabla" 
-    FROM user_tables 
-    ORDER BY table_name
+    SELECT MAZO.ID AS "IDs de mazos", Round(8192/(vsize(MAZO.ID) + vsize(MAZO.USUARIO) + vsize(MAZO.SERVIDOR) + vsize(MAZO.CARTA) + vsize(MAZO.NOMBRE)+ vsize(MAZO.CANTIDAD))) AS "Factor de bloqueo del registro" 
+    FROM MAZO 
+    ORDER BY MAZO.ID
     """
     cur.execute(consul)
     return cur
@@ -327,9 +326,9 @@ def decima_consulta_f():
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-    SELECT table_name AS "Nombre de la tabla", 8192/avg_row_len AS "Factor de bloqueo de la tabla" 
-    FROM user_tables 
-    ORDER BY table_name
+    SELECT REGION.NOMBRE AS "Nombre de la region", Round(8192/(VSIZE(REGION.NOMBRE) + VSIZE(REGION.TIPO_DE_GOBIERNO) + VSIZE(REGION.NIVEL_DE_TECNOLOGIA) + VSIZE(REGION.TOLERANCIA_A_LA_MAGIA) + VSIZE(REGION.DESCRIPCION_AMBIENTE))) AS "Factor de bloqueo del registro" 
+    FROM REGION 
+    ORDER BY REGION.NOMBRE
     """
     cur.execute(consul)
     return cur
@@ -341,9 +340,9 @@ def decima_consulta_g():
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-    SELECT table_name AS "Nombre de la tabla", 8192/avg_row_len AS "Factor de bloqueo de la tabla" 
-    FROM user_tables 
-    ORDER BY table_name
+    SELECT RIOTER.USUARIO AS "Usuarios", RIOTER.NOMBRE_INVOCADOR AS "Nombre de invocador", Round(8192/(VSIZE(RIOTER.USUARIO) + VSIZE(RIOTER.SERVIDOR) + VSIZE(RIOTER.NOMBRE_INVOCADOR) + VSIZE(RIOTER.FECHA_CONTRATO_INICIO) + VSIZE(RIOTER.FECHA_CONTRATO_FIN) + VSIZE(RIOTER.SALARIO))) AS "Factor de bloqueo del registro" 
+    FROM RIOTER 
+    ORDER BY RIOTER.USUARIO, RIOTER.NOMBRE_INVOCADOR
     """
     cur.execute(consul)
     return cur
@@ -355,9 +354,9 @@ def decima_consulta_h():
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-    SELECT table_name AS "Nombre de la tabla", 8192/avg_row_len AS "Factor de bloqueo de la tabla" 
-    FROM user_tables 
-    ORDER BY table_name
+    SELECT SERVIDOR.ID AS "ID de servidor", SERVIDOR.NOMBRE AS "Nombre del servidor", SERVIDOR.IP AS "IP del servidor", Round(8192/(VSIZE(SERVIDOR.ID) + VSIZE(SERVIDOR.NOMBRE) + VSIZE(SERVIDOR.INAUGURACION) + VSIZE(SERVIDOR.IDIOMAS) + VSIZE(SERVIDOR.UBICACION) + VSIZE(SERVIDOR.IP))) AS "Factor de bloqueo del registro" 
+    FROM SERVIDOR 
+    ORDER BY SERVIDOR.ID
     """
     cur.execute(consul)
     return cur
@@ -369,9 +368,9 @@ def decima_consulta_i():
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-    SELECT table_name AS "Nombre de la tabla", 8192/avg_row_len AS "Factor de bloqueo de la tabla" 
-    FROM user_tables 
-    ORDER BY table_name
+    SELECT USUARIO.ID AS "ID de usuario", USUARIO.NOMBRE AS "Nombre del usuario", USUARIO.APELLIDO AS "Apellido del usuario", Round(8192/(VSIZE(USUARIO.ID) + VSIZE(USUARIO.SERVIDOR) + VSIZE(USUARIO.CORREO) + VSIZE(USUARIO.CONTRASENA) + VSIZE(USUARIO.NOMBRE) + VSIZE(USUARIO.APELLIDO) + VSIZE(USUARIO.TELEFONO) + VSIZE(USUARIO.FECHA_NACIMIENTO) + VSIZE(USUARIO.SEXO) + VSIZE(USUARIO.DIVISION) + VSIZE(USUARIO.PUNTOS))) AS "Factor de bloqueo del registro" 
+    FROM USUARIO 
+    ORDER BY USUARIO.ID
     """
     cur.execute(consul)
     return cur
