@@ -377,6 +377,23 @@ def decima_consulta_i():
     cur.close()
     conn.close()
 
+def decima_consulta_index():
+    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
+    cur = conn.cursor()
+    consul = """
+    SELECT table_name AS "Nombre de la tabla", index_name AS "Nombre del índice", ROUND(8192/(SUM(column_length)+8)) AS "Factor de bloqueo del índice" 
+    FROM user_ind_columns 
+    GROUP BY index_name, table_name 
+    ORDER BY table_name ASC
+    """
+    cur.execute(consul)
+    return cur
+    cur.close()
+    conn.close()
+
+
+
 
 
 

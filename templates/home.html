@@ -692,6 +692,31 @@
                           </table>
                    </div>
             <!--Tabla Usuario-->
+
+                <!--Tabla Indices-->
+                <h4>J. Tabla Indices</h4>
+                   <ul class="actions">
+                    <li><a id="button_29" class="button small">Enseñar / Ocultar</a></li>
+                   </ul>
+                       <div id="description_button_29" class="table-wrapper">
+                           <table class="alt">
+                              <tr>
+                                  <thead>
+                                  {% for row in dec_ind.description %}
+                                    <th>{{ row[0] }}</th>
+                                   {% endfor %}
+                                  </thead>
+                              </tr>
+                                {% for line in dec_ind %}
+                                <tr>
+                                    {% for rows in line %}
+                                <td>{{rows}}</td>
+                                    {% endfor %}
+                              </tr>
+                                {% endfor %}
+                          </table>
+                   </div>
+            <!--Tabla de Indices-->
                 </div>
             <!-- Decima consulta -->
         </div>

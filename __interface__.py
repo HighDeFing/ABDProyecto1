@@ -34,10 +34,11 @@ def hello():
     decima_g = consultas.decima_consulta_g()
     decima_h = consultas.decima_consulta_h()
     decima_i = consultas.decima_consulta_i()
+    decima_index = consultas.decima_consulta_index()
     return render_template('home.html', pri=primera, seg=segunda, ter=tercera, cua=cuarta, qui=quinta,
                            sex_a=sexta_a, sex_b=sexta_b, sex_c=sexta_c, sex_d=sexta_d, sex_e=sexta_e, sex_f=sexta_f, sex_g=sexta_g, sex_h=sexta_h, sex_i=sexta_i,
                            sep=septima, oct=octava, nov=novena,
-                           dec_a=decima_a, dec_b=decima_b, dec_c=decima_c, dec_d=decima_d, dec_e=decima_e, dec_f=decima_f, dec_g=decima_g, dec_h=decima_h, dec_i=decima_i)
+                           dec_a=decima_a, dec_b=decima_b, dec_c=decima_c, dec_d=decima_d, dec_e=decima_e, dec_f=decima_f, dec_g=decima_g, dec_h=decima_h, dec_i=decima_i, dec_ind=decima_index)
 
 
 if __name__ == "__main__":
