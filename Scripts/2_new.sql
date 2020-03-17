@@ -13,7 +13,7 @@ CREATE TABLE tryndamere.batalla (
 )
 TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
 
-CREATE UNIQUE INDEX tryndamere.ind_id_batalla_pk ON
+CREATE UNIQUE INDEX tryndamere.batalla_id_ind ON
     tryndamere.batalla (
         id
     ASC )
@@ -21,7 +21,7 @@ CREATE UNIQUE INDEX tryndamere.ind_id_batalla_pk ON
 
 ALTER TABLE tryndamere.batalla
     ADD CONSTRAINT id_batalla_pk PRIMARY KEY ( id )
-        USING INDEX tryndamere.ind_id_batalla_pk;
+        USING INDEX tryndamere.batalla_id_ind;
 
 CREATE TABLE tryndamere.carta (
     id             VARCHAR2(30) NOT NULL,
@@ -39,13 +39,13 @@ CREATE TABLE tryndamere.carta (
 )
 TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
 
-CREATE UNIQUE INDEX tryndamere.ind_id_carta_pk ON
+CREATE UNIQUE INDEX tryndamere.carta_id_ind ON
     tryndamere.carta (
         id
     ASC )
         TABLESPACE repositorio_indices LOGGING;
 
-CREATE INDEX tryndamere.ind_nombre_costo_carta ON
+CREATE INDEX tryndamere.carta_nombre_costo_ind ON
     tryndamere.carta (
         nombre
     ASC,
@@ -55,7 +55,7 @@ CREATE INDEX tryndamere.ind_nombre_costo_carta ON
 
 ALTER TABLE tryndamere.carta
     ADD CONSTRAINT id_carta_pk PRIMARY KEY ( id )
-        USING INDEX tryndamere.ind_id_carta_pk;
+        USING INDEX tryndamere.carta_id_ind;
 
 CREATE TABLE tryndamere.division (
     codigo       VARCHAR2(5 BYTE) NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE tryndamere.division (
 )
 TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
 
-CREATE UNIQUE INDEX tryndamere.ind_codigo_division_pk ON
+CREATE UNIQUE INDEX tryndamere.division_codigo_ind ON
     tryndamere.division (
         codigo
     ASC )
@@ -78,7 +78,7 @@ CREATE INDEX tryndamere.ind_nombre_division ON
 
 ALTER TABLE tryndamere.division
     ADD CONSTRAINT codigo_division_pk PRIMARY KEY ( codigo )
-        USING INDEX tryndamere.ind_codigo_division_pk;
+        USING INDEX tryndamere.division_codigo_ind;
 
 CREATE TABLE tryndamere.invocador (
     usuario           VARCHAR2(30 BYTE) NOT NULL,
@@ -88,15 +88,13 @@ CREATE TABLE tryndamere.invocador (
 )
 TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
 
-CREATE INDEX tryndamere.ind_nombre_invocador_invocador ON
+CREATE INDEX tryndamere.invocador_nombre_invocador_ind ON
     tryndamere.invocador (
         nombre_invocador
     ASC )
         TABLESPACE repositorio_indices LOGGING;
 
---  ERROR: Index name length exceeds maximum allowed length(30)
-
-CREATE UNIQUE INDEX tryndamere.ind_usuario_servidor_invocador_pk ON
+CREATE UNIQUE INDEX tryndamere.invocador_usuario_servidor_ind ON
     tryndamere.invocador (
         usuario
     ASC,
@@ -107,7 +105,7 @@ CREATE UNIQUE INDEX tryndamere.ind_usuario_servidor_invocador_pk ON
 ALTER TABLE tryndamere.invocador
     ADD CONSTRAINT usuario_servidor_invocador_pk PRIMARY KEY ( usuario,
                                                                servidor )
-        USING INDEX tryndamere.ind_usuario_servidor_invocador_pk;
+        USING INDEX tryndamere.invocador_usuario_servidor_ind;
 
 CREATE TABLE tryndamere.mazo (
     id        VARCHAR2(30) NOT NULL,
@@ -119,7 +117,7 @@ CREATE TABLE tryndamere.mazo (
 )
 TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
 
-CREATE UNIQUE INDEX tryndamere.ind_id_usuario_carta_mazo_pk ON
+CREATE UNIQUE INDEX tryndamere.mazo_id_usuario_carta_ind ON
     tryndamere.mazo (
         id
     ASC,
@@ -133,7 +131,7 @@ ALTER TABLE tryndamere.mazo
     ADD CONSTRAINT id_usuario_carta_mazo_pk PRIMARY KEY ( id,
                                                           usuario,
                                                           carta )
-        USING INDEX tryndamere.ind_id_usuario_carta_mazo_pk;
+        USING INDEX tryndamere.mazo_id_usuario_carta_ind;
 
 CREATE TABLE tryndamere.region (
     nombre                 VARCHAR2(30 BYTE) NOT NULL,
@@ -144,7 +142,7 @@ CREATE TABLE tryndamere.region (
 )
 TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
 
-CREATE UNIQUE INDEX tryndamere.ind_nombre_region_pk ON
+CREATE UNIQUE INDEX tryndamere.region_nombre_ind ON
     tryndamere.region (
         nombre
     ASC )
@@ -158,7 +156,7 @@ CREATE INDEX tryndamere.ind_tipo_de_gobierno_region ON
 
 ALTER TABLE tryndamere.region
     ADD CONSTRAINT nombre_region_pk PRIMARY KEY ( nombre )
-        USING INDEX tryndamere.ind_nombre_region_pk;
+        USING INDEX tryndamere.region_nombre_ind;
 
 CREATE TABLE tryndamere.rioter (
     usuario                VARCHAR2(30 BYTE) NOT NULL,
@@ -170,7 +168,7 @@ CREATE TABLE tryndamere.rioter (
 )
 TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
 
-CREATE UNIQUE INDEX tryndamere.ind_usuario_servidor_rioter_pk ON
+CREATE UNIQUE INDEX tryndamere.rioter_usuario_servidor_ind ON
     tryndamere.rioter (
         usuario
     ASC,
@@ -181,7 +179,7 @@ CREATE UNIQUE INDEX tryndamere.ind_usuario_servidor_rioter_pk ON
 ALTER TABLE tryndamere.rioter
     ADD CONSTRAINT usuario_servidor_rioter_pk PRIMARY KEY ( usuario,
                                                             servidor )
-        USING INDEX tryndamere.ind_usuario_servidor_rioter_pk;
+        USING INDEX tryndamere.rioter_usuario_servidor_ind;
 
 CREATE TABLE tryndamere.servidor (
     id            VARCHAR2(4 BYTE) NOT NULL,
@@ -193,7 +191,7 @@ CREATE TABLE tryndamere.servidor (
 )
 TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
 
-CREATE UNIQUE INDEX tryndamere.ind_id_servidor_pk ON
+CREATE UNIQUE INDEX tryndamere.servidor_id_ind ON
     tryndamere.servidor (
         id
     ASC )
@@ -201,7 +199,7 @@ CREATE UNIQUE INDEX tryndamere.ind_id_servidor_pk ON
 
 ALTER TABLE tryndamere.servidor
     ADD CONSTRAINT id_servidor_pk PRIMARY KEY ( id )
-        USING INDEX tryndamere.ind_id_servidor_pk;
+        USING INDEX tryndamere.servidor_id_ind;
 
 CREATE TABLE tryndamere.usuario (
     id                VARCHAR2(30 BYTE) NOT NULL,
@@ -218,7 +216,7 @@ CREATE TABLE tryndamere.usuario (
 )
 TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
 
-CREATE UNIQUE INDEX tryndamere.ind_id_usuario_pk ON
+CREATE UNIQUE INDEX tryndamere.usuario_id_ind ON
     tryndamere.usuario (
         id
     ASC,
@@ -235,7 +233,7 @@ CREATE INDEX tryndamere.ind_nombre_usuario ON
 ALTER TABLE tryndamere.usuario
     ADD CONSTRAINT id_servidor_usuario_pk PRIMARY KEY ( id,
                                                         servidor )
-        USING INDEX tryndamere.ind_id_usuario_pk;
+        USING INDEX tryndamere.usuario_id_ind;
 
 ALTER TABLE tryndamere.batalla
     ADD CONSTRAINT batalla_mazo_fk FOREIGN KEY ( mazo1,

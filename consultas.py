@@ -272,8 +272,7 @@ def decima_consulta_b():
     cur = conn.cursor()
     consul = """
     SELECT CARTA.ID AS "ID de carta", Round(8192/(vsize(CARTA.ID) + vsize(CARTA.TIPO) + VSIZE(CARTA.NOMBRE) + VSIZE(CARTA.DESCRIPCION) + VSIZE(CARTA.MEJORA) + VSIZE(CARTA.REGION) + VSIZE(CARTA.COSTO) + VSIZE(CARTA.ATAQUE) + VSIZE(CARTA.VIDA) + VSIZE(CARTA.RAREZA) + VSIZE(CARTA.EFECTO) + VSIZE(CARTA.PALABRA_CLAVE))) AS "Factor de bloqueo del registro" 
-    FROM 
-    CARTA ORDER BY CARTA.ID
+    FROM CARTA ORDER BY CARTA.ID
     """
     cur.execute(consul)
     return cur
