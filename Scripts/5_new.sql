@@ -63,14 +63,16 @@ EXECUTE agregar_carta ('0007', 'Adepto', 'Chefs de Guerra', 'Chefs de Guerra', '
 EXECUTE agregar_carta ('0008', 'Adepto', 'Caballeria de la Vanguardia', 'Caballeria de la Vanguardia', 'Caballeria de la Vanguardia', 'Demacia', 5, 5, 5, 'Comun', 'Caballeria de la Vanguardia', 'Aguante');
 EXECUTE agregar_carta ('0009', 'Adepto', 'Tianna Crownguard', 'Tianna Crownguard', 'Cuando se me invoca, se prepara el ataque', 'Demacia', 8, 7, 7, 'Epica', 'Cuando se me invoca, se prepara el ataque', 'Aguante');
 --agregar usuario
-EXECUTE agregar_usuario ('UID_00', 'LAN', 'fabianziffzer@gmail.com', '...', 'Fabian', 'Ziffzer', '+58 414 760 9562', '31-07-1996', 'M', 'DV', 0);
+EXECUTE agregar_usuario ('UID_00', 'LAN', 'fabianziffzer@gmail.com', '...', 'Fabian', 'Ziffzer', '+58 414 760 9562', '31-07-1996', 'M', 'DIV', 0);
 EXECUTE agregar_usuario ('UID_01', 'LAN', 'mercyospina@gmail.com', '...', 'Mercy', 'Ospina', '+58 414 760 9563', '30-07-1996', 'F', 'CI', 0);
 EXECUTE agregar_usuario ('UID_00', 'LAS', 'fabianziffzer@gmail.com', '...', 'Fabian', 'Ziffzer', '+58 414 760 9562', '31-07-1996', 'M', 'PI', 0);
+EXECUTE agregar_usuario ('UID_01', 'LAS', 'mercyospina@gmail.com', '...', 'Mercy', 'Ospina', '+58 414 760 9563', '30-07-1996', 'F', 'CI', 0);
 --agregar rioter
 EXECUTE agregar_rioter ('UID_01', 'LAN', 'Riot Mercy4No1', '12-12-2014', '07-01-2024', 999999);
+EXECUTE agregar_rioter ('UID_01', 'LAS', 'Riot Mercy4No1', '12-12-2014', '07-01-2024', 999999);
 --agregar invocador
-EXECUTE agregar_invocador ('UID_00', 'LAN', 'Alekxanderz', '12-11-2014');
-EXECUTE agregar_invocador ('UID_00', 'LAS', 'Alekxanderz', '12-11-2014');
+EXECUTE agregar_invocador ('UID_01', 'LAN', 'Alekxanderz', '12-11-2014');
+EXECUTE agregar_invocador ('UID_01', 'LAS', 'Alekxanderz', '12-11-2014');
 --agregar mazo
 EXECUTE agregar_mazo ('00', 'UID_00', 'LAN', '0000', 'Con el Mazo Dando', 3);
 EXECUTE agregar_mazo ('00', 'UID_00', 'LAN', '0001', 'Con el Mazo Dando', 3);
@@ -93,4 +95,4 @@ EXECUTE agregar_mazo ('01', 'UID_01', 'LAN', '0007', 'Sin piedad', 3);
 EXECUTE agregar_mazo ('01', 'UID_01', 'LAN', '0008', 'Sin piedad', 3);
 EXECUTE agregar_mazo ('01', 'UID_01', 'LAN', '0009', 'Sin piedad', 3);
 --agregar batalla
-EXECUTE agergar_batalla ('A00000','UID_00', 'LAN', '00', '0000', 'UID_01','LAN', '01','0000', 'UID_00', 50);
+EXECUTE agregar_batalla ('A00000','UID_00', 'LAN', '00', '0000', 'UID_01','LAN', '01','0000', 'UID_00', 50);

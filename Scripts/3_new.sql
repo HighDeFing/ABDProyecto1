@@ -33,7 +33,7 @@ GRANT TRYNDAMERE_select to TRYNDAMERE_externo_select;
 
 ALTER USER TRYNDAMERE_externo_select DEFAULT ROLE TRYNDAMERE_select;
 
-connect TRYNDAMERE_externo_select/a1234;
+--connect TRYNDAMERE_externo_select/a1234;
 
-DROP ROLE TRYNDAMERE_insert;
-CREATE ROLE TRYNDAMERE_insert;
+--DROP ROLE TRYNDAMERE_insert;
+--CREATE ROLE TRYNDAMERE_insert;
