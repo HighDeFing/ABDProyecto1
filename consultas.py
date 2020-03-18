@@ -2,7 +2,7 @@ import cx_Oracle
 
 
 def primera_consulta():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     #conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
@@ -17,7 +17,7 @@ def primera_consulta():
 
 
 def segunda_consulta():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     consul = """
     SELECT table_name AS "Nombre de la tabla", index_name AS "Nombre del índice" 
@@ -33,7 +33,7 @@ def segunda_consulta():
 
 
 def tercera_consulta():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
@@ -49,7 +49,7 @@ def tercera_consulta():
 
 
 def cuarta_consulta():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
@@ -65,7 +65,7 @@ def cuarta_consulta():
 
 
 def quinta_consulta():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
@@ -81,12 +81,12 @@ def quinta_consulta():
 
 
 def sexta_consulta_a():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-    SELECT BATALLA.ID AS "ID de batalla", BATALLA.USUARIO1 AS "Invocador 1", BATALLA.USUARIO2 AS "Invocador 2", BATALLA.GANADOR AS "Ganador", vsize(BATALLA.ID) + vsize(BATALLA.USUARIO1) + vsize(BATALLA.MAZO1) + vsize(BATALLA.USUARIO2) + vsize(BATALLA.MAZO2)+ vsize(BATALLA.GANADOR) + vsize(BATALLA.PUNTOS) AS "Tamaño del registro" 
-    FROM BATALLA 
+    SELECT BATALLA.ID AS "ID de batalla", BATALLA.USUARIO1 AS "Invocador 1", BATALLA.USUARIO2 AS "Invocador 2", BATALLA.GANADOR AS "Ganador", (vsize(BATALLA.ID) + vsize(BATALLA.USUARIO1) + vsize(BATALLA.servidor1) + vsize(BATALLA.MAZO1) + vsize(BATALLA.carta1) + vsize(BATALLA.USUARIO2) + vsize(BATALLA.servidor2) + vsize(BATALLA.MAZO2) + vsize(BATALLA.carta2) + vsize(BATALLA.GANADOR) + vsize(BATALLA.PUNTOS)) AS "Tamaño del registro" 
+    FROM tryndamere.batalla
     ORDER BY BATALLA.ID
     """
     cur.execute(consul)
@@ -95,12 +95,12 @@ def sexta_consulta_a():
     conn.close()
 
 def sexta_consulta_b():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
     SELECT CARTA.ID AS "ID de carta", vsize(CARTA.ID) + vsize(CARTA.TIPO) + VSIZE(CARTA.NOMBRE) + VSIZE(CARTA.DESCRIPCION) + VSIZE(CARTA.MEJORA) + VSIZE(CARTA.REGION) + VSIZE(CARTA.COSTO) + VSIZE(CARTA.ATAQUE) + VSIZE(CARTA.VIDA) + VSIZE(CARTA.RAREZA) + VSIZE(CARTA.EFECTO) + VSIZE(CARTA.PALABRA_CLAVE) AS "Tamaño del registro"
-    FROM CARTA 
+    FROM tryndamere.carta
     ORDER BY CARTA.ID
     """
     cur.execute(consul)
@@ -109,12 +109,12 @@ def sexta_consulta_b():
     conn.close()
 
 def sexta_consulta_c():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
     SELECT DIVISION.CODIGO AS "Codigo de division", DIVISION.NOMBRE AS "Nombre de division", DIVISION.DESCRIPCION AS "Descripcion de la division", VSIZE(DIVISION.CODIGO) + VSIZE(DIVISION.NOMBRE) + VSIZE(DIVISION.DESCRIPCION) AS "Tamaño del registro" 
-    FROM DIVISION
+    FROM tryndamere.division
     """
     cur.execute(consul)
     return cur
@@ -122,12 +122,12 @@ def sexta_consulta_c():
     conn.close()
 
 def sexta_consulta_d():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
     SELECT INVOCADOR.USUARIO AS "Usuario", INVOCADOR.NOMBRE_INVOCADOR AS "Nombre de invocador", VSIZE(INVOCADOR.USUARIO) + VSIZE(INVOCADOR.SERVIDOR) + VSIZE(INVOCADOR.NOMBRE_INVOCADOR) + VSIZE(INVOCADOR.FECHA_CREACION) AS "Tamaño del registro" 
-    FROM INVOCADOR 
+    FROM tryndamere.invocador 
     ORDER BY INVOCADOR.USUARIO, INVOCADOR.NOMBRE_INVOCADOR
     """
     cur.execute(consul)
@@ -136,12 +136,12 @@ def sexta_consulta_d():
     conn.close()
 
 def sexta_consulta_e():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
     SELECT MAZO.ID AS "IDs de mazos", vsize(MAZO.ID) + vsize(MAZO.USUARIO) + vsize(MAZO.SERVIDOR) + vsize(MAZO.CARTA) + vsize(MAZO.NOMBRE)+ vsize(MAZO.CANTIDAD) AS "Tamaño del registro" 
-    FROM MAZO 
+    FROM tryndamere.mazo 
     ORDER BY MAZO.ID
     """
     cur.execute(consul)
@@ -150,12 +150,12 @@ def sexta_consulta_e():
     conn.close()
 
 def sexta_consulta_f():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
     SELECT REGION.NOMBRE AS "Nombre de la region", VSIZE(REGION.NOMBRE) + VSIZE(REGION.TIPO_DE_GOBIERNO) + VSIZE(REGION.NIVEL_DE_TECNOLOGIA) + VSIZE(REGION.TOLERANCIA_A_LA_MAGIA) + VSIZE(REGION.DESCRIPCION_AMBIENTE) AS "Tamaño del registro" 
-    FROM REGION 
+    FROM tryndamere.region
     ORDER BY REGION.NOMBRE
     """
     cur.execute(consul)
@@ -164,12 +164,12 @@ def sexta_consulta_f():
     conn.close()
 
 def sexta_consulta_g():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
     SELECT RIOTER.USUARIO AS "Usuarios", RIOTER.NOMBRE_INVOCADOR AS "Nombre de invocador", VSIZE(RIOTER.USUARIO) + VSIZE(RIOTER.SERVIDOR) + VSIZE(RIOTER.NOMBRE_INVOCADOR) + VSIZE(RIOTER.FECHA_CONTRATO_INICIO) + VSIZE(RIOTER.FECHA_CONTRATO_FIN) + VSIZE(RIOTER.SALARIO) AS "Tamaño del registro" 
-    FROM RIOTER 
+    FROM tryndamere.rioter 
     ORDER BY RIOTER.USUARIO, RIOTER.NOMBRE_INVOCADOR
     """
     cur.execute(consul)
@@ -178,12 +178,12 @@ def sexta_consulta_g():
     conn.close()
 
 def sexta_consulta_h():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
     SELECT SERVIDOR.ID AS "ID de servidor", SERVIDOR.NOMBRE AS "Nombre del servidor", SERVIDOR.IP AS "IP del servidor", VSIZE(SERVIDOR.ID) + VSIZE(SERVIDOR.NOMBRE) + VSIZE(SERVIDOR.INAUGURACION) + VSIZE(SERVIDOR.IDIOMAS) + VSIZE(SERVIDOR.UBICACION) + VSIZE(SERVIDOR.IP) AS "Tamaño del registro" 
-    FROM SERVIDOR 
+    FROM tryndamere.servidor
     ORDER BY SERVIDOR.ID
     """
     cur.execute(consul)
@@ -192,12 +192,12 @@ def sexta_consulta_h():
     conn.close()
 
 def sexta_consulta_i():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
     SELECT USUARIO.ID AS "ID de usuario", USUARIO.NOMBRE AS "Nombre del usuario", USUARIO.APELLIDO AS "Apellido del usuario", VSIZE(USUARIO.ID) + VSIZE(USUARIO.SERVIDOR) + VSIZE(USUARIO.CORREO) + VSIZE(USUARIO.CONTRASENA) + VSIZE(USUARIO.NOMBRE) + VSIZE(USUARIO.APELLIDO) + VSIZE(USUARIO.TELEFONO) + VSIZE(USUARIO.FECHA_NACIMIENTO) + VSIZE(USUARIO.SEXO) + VSIZE(USUARIO.DIVISION) + VSIZE(USUARIO.PUNTOS) AS "Tamaño del registro" 
-    FROM USUARIO 
+    FROM tryndamere.usuario 
     ORDER BY USUARIO.ID
     """
     cur.execute(consul)
@@ -207,7 +207,7 @@ def sexta_consulta_i():
 
 
 def septima_consulta():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
@@ -223,7 +223,7 @@ def septima_consulta():
 
 
 def octava_consulta():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
@@ -239,7 +239,7 @@ def octava_consulta():
 
 
 def novena_consulta():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
@@ -253,12 +253,12 @@ def novena_consulta():
 
 
 def decima_consulta_a():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-    SELECT BATALLA.ID AS "ID de batalla", BATALLA.USUARIO1 AS "Invocador 1", BATALLA.USUARIO2 AS "Invocador 2", BATALLA.GANADOR AS "Ganador", Round(8192/(vsize(BATALLA.ID) + vsize(BATALLA.USUARIO1) + vsize(BATALLA.MAZO1) + vsize(BATALLA.USUARIO2) + vsize(BATALLA.MAZO2)+ vsize(BATALLA.GANADOR) + vsize(BATALLA.PUNTOS))) AS "Factor de bloqueo del registro"
-    FROM BATALLA 
+    SELECT BATALLA.ID AS "ID de batalla", BATALLA.USUARIO1 AS "Invocador 1", BATALLA.USUARIO2 AS "Invocador 2", BATALLA.GANADOR AS "Ganador", Round(8192/(vsize(BATALLA.ID) + vsize(BATALLA.USUARIO1) + vsize(BATALLA.servidor1) + vsize(BATALLA.MAZO1) + vsize(BATALLA.carta1) + vsize(BATALLA.USUARIO2) + vsize(BATALLA.servidor2) + vsize(BATALLA.MAZO2) + vsize(BATALLA.carta2) + vsize(BATALLA.GANADOR) + vsize(BATALLA.PUNTOS))) AS "Factor de bloqueo del registro"
+    FROM tryndamere.batalla
     ORDER BY BATALLA.ID
     """
     cur.execute(consul)
@@ -267,12 +267,12 @@ def decima_consulta_a():
     conn.close()
 
 def decima_consulta_b():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
     SELECT CARTA.ID AS "ID de carta", Round(8192/(vsize(CARTA.ID) + vsize(CARTA.TIPO) + VSIZE(CARTA.NOMBRE) + VSIZE(CARTA.DESCRIPCION) + VSIZE(CARTA.MEJORA) + VSIZE(CARTA.REGION) + VSIZE(CARTA.COSTO) + VSIZE(CARTA.ATAQUE) + VSIZE(CARTA.VIDA) + VSIZE(CARTA.RAREZA) + VSIZE(CARTA.EFECTO) + VSIZE(CARTA.PALABRA_CLAVE))) AS "Factor de bloqueo del registro" 
-    FROM CARTA ORDER BY CARTA.ID
+    FROM tryndamere.carta ORDER BY CARTA.ID
     """
     cur.execute(consul)
     return cur
@@ -280,12 +280,12 @@ def decima_consulta_b():
     conn.close()
 
 def decima_consulta_c():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
     SELECT DIVISION.CODIGO AS "Codigo de division", DIVISION.NOMBRE AS "Nombre de division", DIVISION.DESCRIPCION AS "Descripcion de la division", Round(8192/(VSIZE(DIVISION.CODIGO) + VSIZE(DIVISION.NOMBRE) + VSIZE(DIVISION.DESCRIPCION))) AS "Factor de bloqueo del registro" 
-    FROM DIVISION
+    FROM tryndamere.division
     """
     cur.execute(consul)
     return cur
@@ -293,12 +293,12 @@ def decima_consulta_c():
     conn.close()
 
 def decima_consulta_d():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
     SELECT INVOCADOR.USUARIO AS "Usuario", INVOCADOR.NOMBRE_INVOCADOR AS "Nombre de invocador", Round(8192/(VSIZE(INVOCADOR.USUARIO) + VSIZE(INVOCADOR.SERVIDOR) + VSIZE(INVOCADOR.NOMBRE_INVOCADOR) + VSIZE(INVOCADOR.FECHA_CREACION))) AS "Factor de bloqueo del registro" 
-    FROM INVOCADOR 
+    FROM tryndamere.invocador 
     ORDER BY INVOCADOR.USUARIO, INVOCADOR.NOMBRE_INVOCADOR
     """
     cur.execute(consul)
@@ -307,12 +307,12 @@ def decima_consulta_d():
     conn.close()
 
 def decima_consulta_e():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
     SELECT MAZO.ID AS "IDs de mazos", Round(8192/(vsize(MAZO.ID) + vsize(MAZO.USUARIO) + vsize(MAZO.SERVIDOR) + vsize(MAZO.CARTA) + vsize(MAZO.NOMBRE)+ vsize(MAZO.CANTIDAD))) AS "Factor de bloqueo del registro" 
-    FROM MAZO 
+    FROM tryndamere.mazo 
     ORDER BY MAZO.ID
     """
     cur.execute(consul)
@@ -321,12 +321,12 @@ def decima_consulta_e():
     conn.close()
 
 def decima_consulta_f():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
     SELECT REGION.NOMBRE AS "Nombre de la region", Round(8192/(VSIZE(REGION.NOMBRE) + VSIZE(REGION.TIPO_DE_GOBIERNO) + VSIZE(REGION.NIVEL_DE_TECNOLOGIA) + VSIZE(REGION.TOLERANCIA_A_LA_MAGIA) + VSIZE(REGION.DESCRIPCION_AMBIENTE))) AS "Factor de bloqueo del registro" 
-    FROM REGION 
+    FROM tryndamere.region 
     ORDER BY REGION.NOMBRE
     """
     cur.execute(consul)
@@ -335,12 +335,12 @@ def decima_consulta_f():
     conn.close()
 
 def decima_consulta_g():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
     SELECT RIOTER.USUARIO AS "Usuarios", RIOTER.NOMBRE_INVOCADOR AS "Nombre de invocador", Round(8192/(VSIZE(RIOTER.USUARIO) + VSIZE(RIOTER.SERVIDOR) + VSIZE(RIOTER.NOMBRE_INVOCADOR) + VSIZE(RIOTER.FECHA_CONTRATO_INICIO) + VSIZE(RIOTER.FECHA_CONTRATO_FIN) + VSIZE(RIOTER.SALARIO))) AS "Factor de bloqueo del registro" 
-    FROM RIOTER 
+    FROM tryndamere.rioter
     ORDER BY RIOTER.USUARIO, RIOTER.NOMBRE_INVOCADOR
     """
     cur.execute(consul)
@@ -349,12 +349,12 @@ def decima_consulta_g():
     conn.close()
 
 def decima_consulta_h():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
     SELECT SERVIDOR.ID AS "ID de servidor", SERVIDOR.NOMBRE AS "Nombre del servidor", SERVIDOR.IP AS "IP del servidor", Round(8192/(VSIZE(SERVIDOR.ID) + VSIZE(SERVIDOR.NOMBRE) + VSIZE(SERVIDOR.INAUGURACION) + VSIZE(SERVIDOR.IDIOMAS) + VSIZE(SERVIDOR.UBICACION) + VSIZE(SERVIDOR.IP))) AS "Factor de bloqueo del registro" 
-    FROM SERVIDOR 
+    FROM tryndamere.servidor 
     ORDER BY SERVIDOR.ID
     """
     cur.execute(consul)
@@ -363,12 +363,12 @@ def decima_consulta_h():
     conn.close()
 
 def decima_consulta_i():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
     SELECT USUARIO.ID AS "ID de usuario", USUARIO.NOMBRE AS "Nombre del usuario", USUARIO.APELLIDO AS "Apellido del usuario", Round(8192/(VSIZE(USUARIO.ID) + VSIZE(USUARIO.SERVIDOR) + VSIZE(USUARIO.CORREO) + VSIZE(USUARIO.CONTRASENA) + VSIZE(USUARIO.NOMBRE) + VSIZE(USUARIO.APELLIDO) + VSIZE(USUARIO.TELEFONO) + VSIZE(USUARIO.FECHA_NACIMIENTO) + VSIZE(USUARIO.SEXO) + VSIZE(USUARIO.DIVISION) + VSIZE(USUARIO.PUNTOS))) AS "Factor de bloqueo del registro" 
-    FROM USUARIO 
+    FROM tryndamere.usuario 
     ORDER BY USUARIO.ID
     """
     cur.execute(consul)
@@ -377,7 +377,7 @@ def decima_consulta_i():
     conn.close()
 
 def decima_consulta_index():
-    conn = cx_Oracle.connect("TRYNDAMERE", "a1234", "localhost/orcl", encoding="UTF-8")
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
