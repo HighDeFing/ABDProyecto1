@@ -1,7 +1,7 @@
 CREATE TABLE tryndamere.batalla (
     id         VARCHAR2(30) NOT NULL,
     usuario1   VARCHAR2(30 BYTE) NOT NULL,
-    servido1   VARCHAR2(4) NOT NULL,
+    servidor1   VARCHAR2(4) NOT NULL,
     mazo1      VARCHAR2(30) NOT NULL,
     carta1     VARCHAR2(30) NOT NULL,
     usuario2   VARCHAR2(30) NOT NULL,
@@ -255,7 +255,7 @@ ALTER TABLE tryndamere.batalla
 
 ALTER TABLE tryndamere.batalla
     ADD CONSTRAINT batalla_usuario_fk FOREIGN KEY ( usuario1,
-                                                    servido1 )
+                                                    servidor1 )
         REFERENCES tryndamere.usuario ( id,
                                         servidor )
     NOT DEFERRABLE;

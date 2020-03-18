@@ -13,14 +13,14 @@ END agregar_servidor;
 /
 --2
 CREATE OR REPLACE PROCEDURE agregar_division(
-    codigo IN DEVISION.codigo %type,
+    codigo IN DIVISION.codigo %type,
     nombre IN DIVISION.nombre %type,
     descripcion IN DIVISION.descripcion %type
     )
 IS BEGIN
     INSERT INTO DIVISION VALUES (codigo, nombre, descripcion);
     dbms_output.put_line ('INSERCION EXITOSA');
-END agregar_division
+END agregar_division;
 /
 --3
 CREATE OR REPLACE PROCEDURE agregar_region(
@@ -28,13 +28,13 @@ CREATE OR REPLACE PROCEDURE agregar_region(
     tipo_de_gobierno IN REGION.tipo_de_gobierno %type,
     nivel_de_tecnologia IN REGION.nivel_de_tecnologia %type,
     tolerancia_a_la_magia IN REGION.tolerancia_a_la_magia %type,
-    descripcion_ambiente IN REGION.descripcion_ambiente
+    descripcion_ambiente IN REGION.descripcion_ambiente %type
 )
 IS BEGIN
     INSERT INTO REGION VALUES (nombre, tipo_de_gobierno, nivel_de_tecnologia, tolerancia_a_la_magia,
     descripcion_ambiente);
     dbms_output.put_line ('INSERCION EXITOSA');
-END agregar_region
+END agregar_region;
 /
 --4
 CREATE OR REPLACE PROCEDURE agregar_carta(
@@ -55,7 +55,7 @@ IS BEGIN
     INSERT INTO CARTA VALUES (id, tipo, nombre, descripcion, mejora, region, costo, ataque, vida,
     rareza, efecto, palabra_clave);
     dbms_output.put_line ('INSERCION EXITOSA');
-END agregar_carta
+END agregar_carta;
 /
 --5
 CREATE OR REPLACE PROCEDURE agregar_usuario(
@@ -75,7 +75,7 @@ IS BEGIN
     INSERT INTO USUARIO VALUES (id, servidor, correo, contrasena, nombre, apellido, telefono,
     fecha_nacimiento, sexo, division, puntos);
     dbms_output.put_line ('INSERCION EXITOSA');
-END agregar_usuario
+END agregar_usuario;
 /
 --6
 CREATE OR REPLACE PROCEDURE agregar_rioter(
@@ -90,7 +90,7 @@ IS BEGIN
     INSERT INTO RIOTER VALUES (usuario, servidor, nombre_invocador, fecha_contrato_inicio,
     fecha_contrato_fin, salario);
     dbms_output.put_line ('INSERCION EXITOSA');
-END agregar_rioter
+END agregar_rioter;
 /
 --7
 CREATE OR REPLACE PROCEDURE agregar_invocador(
@@ -102,7 +102,7 @@ CREATE OR REPLACE PROCEDURE agregar_invocador(
 IS BEGIN
     INSERT INTO INVOCADOR VALUES (usuario, servidor, nombre_invocador, fecha_creacion);
     dbms_output.put_line ('INSERCION EXITOSA');
-END agregar_rioter
+END agregar_invocador;
 /
 --8
 CREATE OR REPLACE PROCEDURE agregar_mazo(
@@ -116,7 +116,7 @@ CREATE OR REPLACE PROCEDURE agregar_mazo(
 IS BEGIN
     INSERT INTO MAZO VALUES (id, usuario, servidor, carta, nombre, cantidad);
     dbms_output.put_line ('INSERCION EXITOSA');
-END agregar_mazo
+END agregar_mazo;
 /
 --9
 CREATE OR REPLACE PROCEDURE agregar_batalla(
@@ -133,9 +133,9 @@ CREATE OR REPLACE PROCEDURE agregar_batalla(
     puntos IN BATALLA.puntos %type
 )
 IS BEGIN
-    INSERT INTO BATALLA VALUES (id, usuario1, servidor1, mazo1, carta1, usuario2,
-    servidor2, mazo2, carta2, ganador, puntos);
+    INSERT INTO BATALLA VALUES (id, usuario1, servidor1, mazo1, carta1,
+    usuario2, servidor2, mazo2, carta2, ganador, puntos);
     dbms_output.put_line ('INSERCION EXITOSA');
-END agregar_batalla
+END agregar_batalla;
 /
 
