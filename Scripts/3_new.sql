@@ -33,6 +33,38 @@ GRANT TRYNDAMERE_select to TRYNDAMERE_externo_select;
 
 ALTER USER TRYNDAMERE_externo_select DEFAULT ROLE TRYNDAMERE_select;
 
+--rol para los insert
+DROP ROLE TRYNDAMERE_insert;
+CREATE ROLE TRYNDAMERE_insert;
+
+REVOKE INSERT ON tryndamere.batalla FROM TRYNDAMERE_insert;
+REVOKE INSERT ON tryndamere.carta FROM TRYNDAMERE_insert;
+REVOKE INSERT ON tryndamere.division FROM TRYNDAMERE_insert;
+REVOKE INSERT ON tryndamere.invocador FROM TRYNDAMERE_insert;
+REVOKE INSERT ON tryndamere.mazo FROM TRYNDAMERE_insert;
+REVOKE INSERT ON tryndamere.region FROM TRYNDAMERE_insert;
+REVOKE INSERT ON tryndamere.rioter FROM TRYNDAMERE_insert;
+REVOKE INSERT ON tryndamere.servidor FROM TRYNDAMERE_insert;
+REVOKE INSERT ON tryndamere.usuario FROM TRYNDAMERE_insert;
+
+GRANT INSERT ON tryndamere.batalla TO TRYNDAMERE_insert;
+GRANT INSERT ON tryndamere.carta TO TRYNDAMERE_insert;
+GRANT INSERT ON tryndamere.division TO TRYNDAMERE_insert;
+GRANT INSERT ON tryndamere.invocador TO TRYNDAMERE_insert;
+GRANT INSERT ON tryndamere.mazo TO TRYNDAMERE_insert;
+GRANT INSERT ON tryndamere.region TO TRYNDAMERE_insert;
+GRANT INSERT ON tryndamere.rioter TO TRYNDAMERE_insert;
+GRANT INSERT ON tryndamere.servidor TO TRYNDAMERE_insert;
+GRANT INSERT ON tryndamere.usuario TO TRYNDAMERE_insert;
+
+--usuario para los insert
+DROP USER TRYNDAMERE_externo_insert CASCADE;
+CREATE USER TRYNDAMERE_externo_insert IDENTIFIED BY a1234;
+GRANT CONNECT, CREATE SESSION TO TRYNDAMERE_externo_insert;
+GRANT TRYNDAMERE_insert to TRYNDAMERE_externo_insert;
+
+ALTER USER TRYNDAMERE_externo_insert DEFAULT ROLE TRYNDAMERE_insert;
+
 --connect TRYNDAMERE_externo_select/a1234;
 
 DROP ROLE TRYNDAMERE_insert;
