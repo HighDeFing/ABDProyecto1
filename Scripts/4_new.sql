@@ -73,7 +73,7 @@ CREATE OR REPLACE PROCEDURE agregar_usuario(
 )
 IS BEGIN
     INSERT INTO USUARIO VALUES (id, servidor, correo, contrasena, nombre, apellido, telefono,
-    fecha_nacimiento, sexo, division, puntos);
+    TO_DATE(fecha_nacimiento, 'dd-mm-yyyy'), sexo, division, puntos);
     dbms_output.put_line ('INSERCION EXITOSA');
 END agregar_usuario;
 /
@@ -87,8 +87,8 @@ CREATE OR REPLACE PROCEDURE agregar_rioter(
     salario IN RIOTER.salario %type
 )
 IS BEGIN
-    INSERT INTO RIOTER VALUES (usuario, servidor, nombre_invocador, fecha_contrato_inicio,
-    fecha_contrato_fin, salario);
+    INSERT INTO RIOTER VALUES (usuario, servidor, nombre_invocador, TO_DATE(fecha_contrato_inicio, 'dd-mm-yyyy'),
+    TO_DATE(fecha_contrato_fin, 'dd-mm-yyyy'), salario);
     dbms_output.put_line ('INSERCION EXITOSA');
 END agregar_rioter;
 /
@@ -100,7 +100,7 @@ CREATE OR REPLACE PROCEDURE agregar_invocador(
     fecha_creacion IN INVOCADOR.fecha_creacion %type
 )
 IS BEGIN
-    INSERT INTO INVOCADOR VALUES (usuario, servidor, nombre_invocador, fecha_creacion);
+    INSERT INTO INVOCADOR VALUES (usuario, servidor, nombre_invocador, TO_DATE(fecha_creacion, 'dd-mm-yyyy'));
     dbms_output.put_line ('INSERCION EXITOSA');
 END agregar_invocador;
 /
