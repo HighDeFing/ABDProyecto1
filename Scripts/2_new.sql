@@ -1,30 +1,37 @@
 CREATE TABLE tryndamere.batalla (
-    id         VARCHAR2(30) NOT NULL,
-    usuario1   VARCHAR2(30 BYTE) NOT NULL,
-    servidor1   VARCHAR2(4) NOT NULL,
-    mazo1      VARCHAR2(30) NOT NULL,
-    carta1     VARCHAR2(30) NOT NULL,
-    usuario2   VARCHAR2(30) NOT NULL,
-    servidor2  VARCHAR2(4) NOT NULL,
-    mazo2      VARCHAR2(30) NOT NULL,
-    carta2     VARCHAR2(30) NOT NULL,
-    ganador    VARCHAR2(30 BYTE),
-    puntos     NUMBER(3)
+    id              VARCHAR2(30 BYTE) NOT NULL,
+    usuario1        VARCHAR2(30 BYTE) NOT NULL,
+    servidor1       VARCHAR2(4 BYTE) NOT NULL,
+    mazo1           VARCHAR2(30 BYTE) NOT NULL,
+    carta1          VARCHAR2(30 BYTE) NOT NULL,
+    usuario2        VARCHAR2(30 BYTE) NOT NULL,
+    servidor2       VARCHAR2(4 BYTE) NOT NULL,
+    mazo2           VARCHAR2(30 BYTE) NOT NULL,
+    carta2          VARCHAR2(30 BYTE) NOT NULL,
+    ganador         VARCHAR2(30 BYTE),
+    puntos          NUMBER(3)
 )
-TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
+PCTFREE 10 PCTUSED 40 TABLESPACE repositorio_tablas LOGGING
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+NO INMEMORY;
 
 CREATE UNIQUE INDEX tryndamere.batalla_id_ind ON
     tryndamere.batalla (
         id
     ASC )
-        TABLESPACE repositorio_indices LOGGING;
+        TABLESPACE repositorio_indices PCTFREE 10
+            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+            DEFAULT )
+        LOGGING;
+
 
 ALTER TABLE tryndamere.batalla
     ADD CONSTRAINT id_batalla_pk PRIMARY KEY ( id )
         USING INDEX tryndamere.batalla_id_ind;
 
 CREATE TABLE tryndamere.carta (
-    id             VARCHAR2(30) NOT NULL,
+    id             VARCHAR2(30 BYTE) NOT NULL,
     tipo           VARCHAR2(50 BYTE),
     nombre         VARCHAR2(50 BYTE),
     descripcion    VARCHAR2(100 BYTE),
@@ -37,13 +44,19 @@ CREATE TABLE tryndamere.carta (
     efecto         VARCHAR2(100 BYTE),
     palabra_clave  VARCHAR2(30 BYTE)
 )
-TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
+PCTFREE 10 PCTUSED 40 TABLESPACE repositorio_tablas LOGGING
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+NO INMEMORY;
 
 CREATE UNIQUE INDEX tryndamere.carta_id_ind ON
     tryndamere.carta (
         id
     ASC )
-        TABLESPACE repositorio_indices LOGGING;
+        TABLESPACE repositorio_indices PCTFREE 10
+            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+            DEFAULT )
+        LOGGING;
 
 CREATE INDEX tryndamere.carta_nombre_costo_ind ON
     tryndamere.carta (
@@ -51,7 +64,10 @@ CREATE INDEX tryndamere.carta_nombre_costo_ind ON
     ASC,
         costo
     ASC )
-        TABLESPACE repositorio_indices LOGGING;
+        TABLESPACE repositorio_indices PCTFREE 10
+            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+            DEFAULT )
+        LOGGING;
 
 ALTER TABLE tryndamere.carta
     ADD CONSTRAINT id_carta_pk PRIMARY KEY ( id )
@@ -62,19 +78,29 @@ CREATE TABLE tryndamere.division (
     nombre       VARCHAR2(50 BYTE),
     descripcion  VARCHAR2(50 BYTE)
 )
-TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
+PCTFREE 10 PCTUSED 40 TABLESPACE repositorio_tablas LOGGING
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+NO INMEMORY;
 
 CREATE UNIQUE INDEX tryndamere.division_codigo_ind ON
     tryndamere.division (
         codigo
     ASC )
-        TABLESPACE repositorio_indices LOGGING;
+        TABLESPACE repositorio_indices PCTFREE 10
+            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+            DEFAULT )
+        LOGGING;
 
 CREATE INDEX tryndamere.ind_nombre_division ON
     tryndamere.division (
         nombre
     ASC )
-        TABLESPACE repositorio_indices LOGGING;
+        TABLESPACE repositorio_indices PCTFREE 10
+            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+            DEFAULT )
+        LOGGING;
+
 
 ALTER TABLE tryndamere.division
     ADD CONSTRAINT codigo_division_pk PRIMARY KEY ( codigo )
@@ -86,13 +112,19 @@ CREATE TABLE tryndamere.invocador (
     nombre_invocador  VARCHAR2(50 BYTE),
     fecha_creacion    DATE
 )
-TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
+PCTFREE 10 PCTUSED 40 TABLESPACE repositorio_tablas LOGGING
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+NO INMEMORY;
 
 CREATE INDEX tryndamere.invocador_nombre_invocador_ind ON
     tryndamere.invocador (
         nombre_invocador
     ASC )
-        TABLESPACE repositorio_indices LOGGING;
+        TABLESPACE repositorio_indices PCTFREE 10
+            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+            DEFAULT )
+        LOGGING;
 
 CREATE UNIQUE INDEX tryndamere.invocador_usuario_servidor_ind ON
     tryndamere.invocador (
@@ -100,22 +132,31 @@ CREATE UNIQUE INDEX tryndamere.invocador_usuario_servidor_ind ON
     ASC,
         servidor
     ASC )
-        TABLESPACE repositorio_indices LOGGING;
+        TABLESPACE repositorio_indices PCTFREE 10
+            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+            DEFAULT )
+        LOGGING;
+
 
 ALTER TABLE tryndamere.invocador
     ADD CONSTRAINT usuario_servidor_invocador_pk PRIMARY KEY ( usuario,
                                                                servidor )
         USING INDEX tryndamere.invocador_usuario_servidor_ind;
 
+ALTER TABLE tryndamere.invocador ADD CONSTRAINT invocador__un UNIQUE ( nombre_invocador );
+
 CREATE TABLE tryndamere.mazo (
-    id        VARCHAR2(30) NOT NULL,
+    id        VARCHAR2(30 BYTE) NOT NULL,
     usuario   VARCHAR2(30 BYTE) NOT NULL,
     servidor  VARCHAR2(4 BYTE) NOT NULL,
-    carta     VARCHAR2(30) NOT NULL,
-    nombre    VARCHAR2(50),
+    carta     VARCHAR2(30 BYTE) NOT NULL,
+    nombre    VARCHAR2(50 BYTE),
     cantidad  NUMBER(1)
 )
-TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
+PCTFREE 10 PCTUSED 40 TABLESPACE repositorio_tablas LOGGING
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+NO INMEMORY;
 
 CREATE UNIQUE INDEX tryndamere.mazo_id_usuario_carta_ind ON
     tryndamere.mazo (
@@ -124,13 +165,20 @@ CREATE UNIQUE INDEX tryndamere.mazo_id_usuario_carta_ind ON
         usuario
     ASC,
         carta
+    ASC,
+        servidor
     ASC )
-        TABLESPACE repositorio_indices LOGGING;
+        TABLESPACE repositorio_indices PCTFREE 10
+            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+            DEFAULT )
+        LOGGING;
+
 
 ALTER TABLE tryndamere.mazo
     ADD CONSTRAINT id_usuario_carta_mazo_pk PRIMARY KEY ( id,
                                                           usuario,
-                                                          carta )
+                                                          carta,
+                                                          servidor )
         USING INDEX tryndamere.mazo_id_usuario_carta_ind;
 
 CREATE TABLE tryndamere.region (
@@ -140,19 +188,29 @@ CREATE TABLE tryndamere.region (
     tolerancia_a_la_magia  VARCHAR2(50 BYTE),
     descripcion_ambiente   VARCHAR2(50 BYTE)
 )
-TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
-
-CREATE UNIQUE INDEX tryndamere.region_nombre_ind ON
-    tryndamere.region (
-        nombre
-    ASC )
-        TABLESPACE repositorio_indices LOGGING;
+PCTFREE 10 PCTUSED 40 TABLESPACE repositorio_tablas LOGGING
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+NO INMEMORY;
 
 CREATE INDEX tryndamere.ind_tipo_de_gobierno_region ON
     tryndamere.region (
         tipo_de_gobierno
     ASC )
-        TABLESPACE repositorio_indices LOGGING;
+        TABLESPACE repositorio_indices PCTFREE 10
+            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+            DEFAULT )
+        LOGGING;
+
+CREATE UNIQUE INDEX tryndamere.region_nombre_ind ON
+    tryndamere.region (
+        nombre
+    ASC )
+        TABLESPACE repositorio_indices PCTFREE 10
+            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+            DEFAULT )
+        LOGGING;
+
 
 ALTER TABLE tryndamere.region
     ADD CONSTRAINT nombre_region_pk PRIMARY KEY ( nombre )
@@ -166,7 +224,10 @@ CREATE TABLE tryndamere.rioter (
     fecha_contrato_fin     DATE,
     salario                NUMBER
 )
-TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
+PCTFREE 10 PCTUSED 40 TABLESPACE repositorio_tablas LOGGING
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+NO INMEMORY;
 
 CREATE UNIQUE INDEX tryndamere.rioter_usuario_servidor_ind ON
     tryndamere.rioter (
@@ -174,7 +235,11 @@ CREATE UNIQUE INDEX tryndamere.rioter_usuario_servidor_ind ON
     ASC,
         servidor
     ASC )
-        TABLESPACE repositorio_indices LOGGING;
+        TABLESPACE repositorio_indices PCTFREE 10
+            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+            DEFAULT )
+        LOGGING;
+
 
 ALTER TABLE tryndamere.rioter
     ADD CONSTRAINT usuario_servidor_rioter_pk PRIMARY KEY ( usuario,
@@ -189,13 +254,20 @@ CREATE TABLE tryndamere.servidor (
     ubicacion     VARCHAR2(50 BYTE),
     ip            VARCHAR2(50 BYTE)
 )
-TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
+PCTFREE 10 PCTUSED 40 TABLESPACE repositorio_tablas LOGGING
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+NO INMEMORY;
 
 CREATE UNIQUE INDEX tryndamere.servidor_id_ind ON
     tryndamere.servidor (
         id
     ASC )
-        TABLESPACE repositorio_indices LOGGING;
+        TABLESPACE repositorio_indices PCTFREE 10
+            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+            DEFAULT )
+        LOGGING;
+
 
 ALTER TABLE tryndamere.servidor
     ADD CONSTRAINT id_servidor_pk PRIMARY KEY ( id )
@@ -214,7 +286,19 @@ CREATE TABLE tryndamere.usuario (
     division          VARCHAR2(5 BYTE) NOT NULL,
     puntos            NUMBER(3)
 )
-TABLESPACE repositorio_tablas LOGGING NO INMEMORY;
+PCTFREE 10 PCTUSED 40 TABLESPACE repositorio_tablas LOGGING
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+NO INMEMORY;
+
+CREATE INDEX tryndamere.ind_nombre_usuario ON
+    tryndamere.usuario (
+        nombre
+    ASC )
+        TABLESPACE repositorio_indices PCTFREE 10
+            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+            DEFAULT )
+        LOGGING;
 
 CREATE UNIQUE INDEX tryndamere.usuario_id_ind ON
     tryndamere.usuario (
@@ -222,13 +306,11 @@ CREATE UNIQUE INDEX tryndamere.usuario_id_ind ON
     ASC,
         servidor
     ASC )
-        TABLESPACE repositorio_indices LOGGING;
+        TABLESPACE repositorio_indices PCTFREE 10
+            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+            DEFAULT )
+        LOGGING;
 
-CREATE INDEX tryndamere.ind_nombre_usuario ON
-    tryndamere.usuario (
-        nombre
-    ASC )
-        TABLESPACE repositorio_indices LOGGING;
 
 ALTER TABLE tryndamere.usuario
     ADD CONSTRAINT id_servidor_usuario_pk PRIMARY KEY ( id,
@@ -238,33 +320,23 @@ ALTER TABLE tryndamere.usuario
 ALTER TABLE tryndamere.batalla
     ADD CONSTRAINT batalla_mazo_fk FOREIGN KEY ( mazo1,
                                                  usuario1,
-                                                 carta1 )
+                                                 carta1,
+                                                 servidor1 )
         REFERENCES tryndamere.mazo ( id,
                                      usuario,
-                                     carta )
+                                     carta,
+                                     servidor )
     NOT DEFERRABLE;
 
 ALTER TABLE tryndamere.batalla
     ADD CONSTRAINT batalla_mazo_fkv1 FOREIGN KEY ( mazo2,
                                                    usuario2,
-                                                   carta2 )
+                                                   carta2,
+                                                   servidor2 )
         REFERENCES tryndamere.mazo ( id,
                                      usuario,
-                                     carta )
-    NOT DEFERRABLE;
-
-ALTER TABLE tryndamere.batalla
-    ADD CONSTRAINT batalla_usuario_fk FOREIGN KEY ( usuario1,
-                                                    servidor1 )
-        REFERENCES tryndamere.usuario ( id,
-                                        servidor )
-    NOT DEFERRABLE;
-
-ALTER TABLE tryndamere.batalla
-    ADD CONSTRAINT batalla_usuario_fkv1 FOREIGN KEY ( usuario2,
-                                                      servidor2 )
-        REFERENCES tryndamere.usuario ( id,
-                                        servidor )
+                                     carta,
+                                     servidor )
     NOT DEFERRABLE;
 
 ALTER TABLE tryndamere.carta
@@ -307,5 +379,3 @@ ALTER TABLE tryndamere.usuario
     ADD CONSTRAINT usuario_servidor_fk FOREIGN KEY ( servidor )
         REFERENCES tryndamere.servidor ( id )
     NOT DEFERRABLE;
-
-ALTER TABLE tryndamere.invocador ADD CONSTRAINT invocador__un UNIQUE ( nombre_invocador );

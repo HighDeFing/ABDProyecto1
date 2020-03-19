@@ -72,7 +72,7 @@ EXECUTE agregar_rioter ('UID_01', 'LAN', 'Riot Mercy4No1', '12-12-2014', '07-01-
 EXECUTE agregar_rioter ('UID_01', 'LAS', 'Riot Mercy4No1', '12-12-2014', '07-01-2024', 999999);
 --agregar invocador
 EXECUTE agregar_invocador ('UID_01', 'LAN', 'Alekxanderz', '12-11-2014');
-EXECUTE agregar_invocador ('UID_01', 'LAS', 'Alekxanderz', '12-11-2014');
+EXECUTE agregar_invocador ('UID_01', 'LAS', 'Alekxinderz', '12-11-2014');
 --agregar mazo
 EXECUTE agregar_mazo ('00', 'UID_00', 'LAN', '0000', 'Con el Mazo Dando', 3);
 EXECUTE agregar_mazo ('00', 'UID_00', 'LAN', '0001', 'Con el Mazo Dando', 3);
