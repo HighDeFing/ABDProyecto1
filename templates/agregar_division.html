@@ -30,13 +30,22 @@
 			<nav id="menu">
 				<ul class="links">
 					<li><a href="home.html">Home</a></li>
-					<li><a href="insert_home.html">Insert</a></li>
+					<li><a href="insert_home.html">Agregar</a></li>
+                    <li><a href="agregar_batalla.html">Agregar Batalla</a></li>
+					<li><a href="agregar_carta.html">Agregar Carta</a></li>
+                    <li><a href="agregar_division.html">Agregar Division</a></li>
+                    <li><a href="agregar_invocador.html">Agregar Invocador</a></li>
+                    <li><a href="agregar_mazo.html">Agregar Mazo</a></li>
+                    <li><a href="agregar_region.html">Agregar Region</a></li>
+                    <li><a href="agregar_rioter.html">Agregar Rioter</a></li>
+                    <li><a href="agregar_servidor.html">Agregar Servidor</a></li>
+                    <li><a href="agregar_usuario.html">Agregar Usuario</a></li>
 				</ul>
 			</nav>
 
 		<!-- Heading -->
 			<div id="heading" >
-				<h1>Inserts</h1>
+				<h1>Agregar Division</h1>
 			</div>
 
 		<!-- Main -->
@@ -49,7 +58,7 @@
                                 <!-- Form -->
 							<!--Primer insert-->
 								<div id="description_button_1" class="table-wrapper">
-									<form method="post" action="{{url_for('agregar_division.html')}}" class="col-4 col-12-xsmall">
+									<form method="post" action="{{url_for('agregar_division')}}" class="col-4 col-12-xsmall">
 										<div class="row gtr-uniform">
                                             <!-- Break -->
                                             <div class="col-4 col-12-xsmall">
@@ -61,8 +70,10 @@
                                             <div class="col-4 col-12-xsmall">
 												<input type="text" name="agregar_division_descripcion" id="agregar_division_descripcion" value="" placeholder="Descripcion" />
 											</div>
-											<li><input type="submit" value="Submit Form" class="primary" /></li>
-											<li><input type="reset" value="Reset" /></li>
+											<div class="col-12">
+												<ul class="actions">
+													<li><input type="submit" value="Submit Form" class="primary" /></li>
+													<li><input type="reset" value="Reset" /></li>
 												</ul>
 											</div>
 										</div>

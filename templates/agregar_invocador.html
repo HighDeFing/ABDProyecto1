@@ -30,13 +30,22 @@
 			<nav id="menu">
 				<ul class="links">
 					<li><a href="home.html">Home</a></li>
-					<li><a href="insert_home.html">Insert</a></li>
+					<li><a href="insert_home.html">Agregar</a></li>
+                    <li><a href="agregar_batalla.html">Agregar Batalla</a></li>
+					<li><a href="agregar_carta.html">Agregar Carta</a></li>
+                    <li><a href="agregar_division.html">Agregar Division</a></li>
+                    <li><a href="agregar_invocador.html">Agregar Invocador</a></li>
+                    <li><a href="agregar_mazo.html">Agregar Mazo</a></li>
+                    <li><a href="agregar_region.html">Agregar Region</a></li>
+                    <li><a href="agregar_rioter.html">Agregar Rioter</a></li>
+                    <li><a href="agregar_servidor.html">Agregar Servidor</a></li>
+                    <li><a href="agregar_usuario.html">Agregar Usuario</a></li>
 				</ul>
 			</nav>
 
 		<!-- Heading -->
 			<div id="heading" >
-				<h1>Inserts</h1>
+				<h1>Agregar Invocador</h1>
 			</div>
 
 		<!-- Main -->
@@ -52,11 +61,18 @@
 									<form method="post" action="{{url_for('agregar_invocador')}}" class="col-4 col-12-xsmall">
 										<div class="row gtr-uniform">
                                             <!-- Break -->
-                                            <div class="col-4 col-12-xsmall">
-												<input type="text" name="agregar_usuario_id" id="agregar_usuario_id" value="" placeholder="ID" />
+
+											<div class="col-12-xsmall">
+												<select name="agregar_invocador_usuario" id="agregar_invocador_usuario">
+													<option value="">- Select Usuario -</option>
+													<option value="BR">BR</option>
+													<option value="EUNE">EUNE</option>
+													<option value="LAN">LAN</option>
+													<option value="LAS">LAS</option>
+												</select>
 											</div>
 											<div class="col-12-xsmall">
-												<select name="agregar_usuario_servidor" id="agregar_usuario_servidor">
+												<select name="agregar_invocador_servidor" id="agregar_invocador_servidor">
 													<option value="">- Select Servidor -</option>
 													<option value="BR">BR</option>
 													<option value="EUNE">EUNE</option>
@@ -64,87 +80,12 @@
 													<option value="LAS">LAS</option>
 												</select>
 											</div>
-                                            <div class="col-6 col-12-xsmall">
-												<input type="email" name="email" id="email" value="" placeholder="Correo" />
+											<div class="col-8-xlarge">
+												<input type="text" name="agregar_invocador_nombre_invocador" id="agregar_invocador_nombre_invocador" value="" placeholder="Nombre Invocador" />
 											</div>
-                                            <div class="col-4 col-12-xsmall">
-												<input type="password" name="password" id="password" value="" placeholder="Contraseña" />
+											<div class="col-8-xlarge">Fecha
+												<input type="date" name="agregar_invocador_fecha_creacion" id="agregar_invocador_fecha_creacion" value="" placeholder="Fecha de creacion" />
 											</div>
-                                            <div class="col-4 col-12-xsmall">
-												<input type="text" name="nombre" id="nombre" value="" placeholder="Nombre" />
-											</div>
-                                            <div class="col-4 col-12-xsmall">
-												<input type="text" name="apellido" id="apellido" value="" placeholder="Apellido" />
-											</div>
-                                            <div class="col-4 col-12-xsmall">
-												<input type="tel" name="telefono" id="telefono" value="" placeholder="Telefono" />
-											</div>
-											</br>
-											<h4>Fecha</h4>
-                                             <div class="col-9 10-xlarge">
-												<input type="date" name="fecha_nacimiento" id="date" value="" placeholder="Fecha_nacimiento" />
-											</div>
-											</br>
-											<!-- Break -->
-											</br>
-											<h4>Sexo</h4>
-                                            <div class="col-4 col-12-small">
-												<input type="radio" id="femenino" name="radio">
-												<label for="femenino">Femenino</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="masculino" name="radio">
-												<label for="masculino">Masculino</label>
-											</div>
-                                            <div class="col-12">
-												<select name="category" id="division">
-													<option value="">- Select Division -</option>
-													<option value="SR">Sin Ranking</option>
-													<option value="PROV">Provisional</option>
-													<option value="HIV">Hierro 4</option>
-													<option value="HIII">Hierro 3</option>
-													<option value="HII">Hierro 2</option>
-													<option value="HI">Hierro 1</option>
-													<option value="BIV">Bronce 4</option>
-													<option value="BIII">Bronce 3</option>
-													<option value="BII">Bronce 2</option>
-													<option value="BI">Bronce 1</option>
-													<option value="PIV">Plata 4</option>
-													<option value="PIII">Plata 3</option>
-													<option value="PII">Plata 2</option>
-													<option value="PI">Plata 1</option>
-													<option value="OIV">Oro 4</option>
-													<option value="OIII">Oro 3</option>
-													<option value="OII">Oro 2</option>
-													<option value="OI">Oro 1</option>
-													<option value="PLIV">Platino 4</option>
-													<option value="PLIII">Platino 3</option>
-													<option value="PLII">Platino 2</option>
-													<option value="PLI">Platino 1</option>
-													<option value="DIV">Diamante 4</option>
-													<option value="DIII">Diamante 3</option>
-													<option value="DII">Diamante 2</option>
-													<option value="DI">Diamante 1</option>
-													<option value="MIV">Master 4</option>
-													<option value="MIII">Master 3</option>
-													<option value="MII">Master 2</option>
-													<option value="MI">Master 1</option>
-													<option value="GMIV">Grandmaster 4</option>
-													<option value="GMIII">Grandmaster 3</option>
-													<option value="GMII">Grandmaster 2</option>
-													<option value="GMI">Grandmaster 1</option>
-													<option value="CIV">Challenger 4</option>
-													<option value="CIII">Challenger 3</option>
-													<option value="CII">Challenger 2</option>
-													<option value="CI">Challenger 1</option>
-												</select>
-											</div>
-											</br>
-											<div class="col-4 col-12-xsmall">
-												<input type="number" name="puntos" id="puntos" value="" placeholder="Puntos" />
-											</div>
-											<!-- Break -->
-											</br>
 											<!-- Break -->
 											<div class="col-12">
 												<ul class="actions">
