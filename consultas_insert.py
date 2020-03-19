@@ -1,146 +1,173 @@
 import cx_Oracle
 
 
-def select_batallas1():
+def select_usuario_id():
     conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-        SELECT unique(usuario1), unique(servidor1)
-        FROM tryndamere.batalla
+        SELECT DISTINCT(id)
+        FROM tryndamere.usuario
         """
     cur.execute(consul)
     return cur
     cur.close()
     conn.close()
 
-def select_batallas2():
+
+def select_usuario_servidor():
     conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-        SELECT unique(usuario2), unique(servidor2)
-        FROM tryndamere.batalla
-        """
-    cur.execute(consul)
-    return cur
-    cur.close()
-    conn.close()
-    
-def select_batallas3():
-    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
-    # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
-    cur = conn.cursor()
-    consul = """
-        SELECT unique(mazo1), unique(usuario1), unique(carta1)
-        FROM tryndamere.batalla
-        """
-    cur.execute(consul)
-    return cur
-    cur.close()
-    conn.close()
-    
-def select_batallas2():
-    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
-    # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
-    cur = conn.cursor()
-    consul = """
-        SELECT unique(mazo2), unique(usuario2), unique(carta2)
-        FROM tryndamere.batalla
-        """
-    cur.execute(consul)
-    return cur
-    cur.close()
-    conn.close()
-    
-def select_cartas():
-    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
-    # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
-    cur = conn.cursor()
-    consul = """
-        SELECT unique(region)
-        FROM tryndamere.carta
-        """
-    cur.execute(consul)
-    return cur
-    cur.close()
-    conn.close()
-    
-def select_mazos1():
-    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
-    # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
-    cur = conn.cursor()
-    consul = """
-        SELECT unique(carta)
-        FROM tryndamere.mazos
-        """
-    cur.execute(consul)
-    return cur
-    cur.close()
-    conn.close()
-    
-def select_mazos2():
-    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
-    # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
-    cur = conn.cursor()
-    consul = """
-        SELECT unique(usuario), unique(servidor)
-        FROM tryndamere.mazo
-        """
-    cur.execute(consul)
-    return cur
-    cur.close()
-    conn.close()
-    
-def select_usuarios1():
-    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
-    # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
-    cur = conn.cursor()
-    consul = """
-        SELECT unique(division)
+        SELECT DISTINCT(servidor)
         FROM tryndamere.usuario
         """
     cur.execute(consul)
     return cur
     cur.close()
     conn.close()
-    
-def select_usuarios2():
+
+
+def select_division_codigo():
     conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-        SELECT unique(servidor)
-        FROM tryndamere.usuario
+        SELECT DISTINCT(codigo)
+        FROM tryndamere.division
         """
     cur.execute(consul)
     return cur
     cur.close()
     conn.close()
-    
-def select_rioters():
+
+
+def select_servidor_id():
     conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-        SELECT unique(usuario), unique(servidor)
+        SELECT DISTINCT(id)
+        FROM tryndamere.servidor
+        """
+    cur.execute(consul)
+    return cur
+    cur.close()
+    conn.close()
+
+
+def select_rioter_usuario():
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
+    # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
+    cur = conn.cursor()
+    consul = """
+        SELECT DISTINCT(usuario)
         FROM tryndamere.rioter
         """
     cur.execute(consul)
     return cur
     cur.close()
     conn.close()
-    
-def select_invocadores():
+
+
+def select_rioter_servidor():
     conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-        SELECT unique(usuario), unique(servidor)
-        FROM tryndamere.invocador
-        """
+            SELECT DISTINCT(servidor)
+            FROM tryndamere.rioter
+            """
     cur.execute(consul)
     return cur
     cur.close()
     conn.close()
+
+
+def select_mazo_id():
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
+    # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
+    cur = conn.cursor()
+    consul = """
+                SELECT DISTINCT(id)
+                FROM tryndamere.mazo
+                """
+    cur.execute(consul)
+    return cur
+    cur.close()
+    conn.close()
+
+
+def select_mazo_usuario():
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
+    # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
+    cur = conn.cursor()
+    consul = """
+                SELECT DISTINCT(usuario)
+                FROM tryndamere.mazo
+                """
+    cur.execute(consul)
+    return cur
+    cur.close()
+    conn.close()
+
+
+def select_mazo_usuario():
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
+    # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
+    cur = conn.cursor()
+    consul = """
+                SELECT DISTINCT(servidor)
+                FROM tryndamere.mazo
+                """
+    cur.execute(consul)
+    return cur
+    cur.close()
+    conn.close()
+
+
+def select_mazo_carta():
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
+    # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
+    cur = conn.cursor()
+    consul = """
+                SELECT DISTINCT(carta)
+                FROM tryndamere.mazo
+                """
+    cur.execute(consul)
+    return cur
+    cur.close()
+    conn.close()
+
+
+def select_carta_id():
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
+    # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
+    cur = conn.cursor()
+    consul = """
+                    SELECT DISTINCT(id)
+                    FROM tryndamere.carta
+                    """
+    cur.execute(consul)
+    return cur
+    cur.close()
+    conn.close()
+
+def select_region_nombre():
+    conn = cx_Oracle.connect("TRYNDAMERE_externo_select", "a1234", "localhost/orcl", encoding="UTF-8")
+    # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
+    cur = conn.cursor()
+    consul = """
+                    SELECT DISTINCT(nombre)
+                    FROM tryndamere.region
+                    """
+    cur.execute(consul)
+    return cur
+    cur.close()
+    conn.close()
+
+
+
+
 
