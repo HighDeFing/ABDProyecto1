@@ -50,9 +50,10 @@ def insert_home():
 
 @app.route('/agregar_usuario.html', methods=['GET', 'POST'])
 def agregar_usuario():
-    consulta_usuarios = consultas_insert.select_usuarios()
-    etwas = render_template('agregar_usuario.html', consulta_user=consulta_usuarios)
-    #inserts.parse_agregar_usuario()
+    servidor = consultas_insert.select_servidor_id()
+    division = consultas_insert.select_division_codigo()
+    etwas = render_template('agregar_usuario.html', servidor=servidor, division=division)
+    inserts.agregar_usuario()
     # other = request.form.get('projectFilepath')
     # print(other, file=sys.stdout)
     return etwas
@@ -65,12 +66,25 @@ def agregar_servidor():
 
 @app.route('/agregar_rioter.html', methods=['GET', 'POST'])
 def agregar_rioter():
-    return render_template('agregar_rioter.html')
+    usuario = consultas_insert.select_usuario_id()
+    servidor = consultas_insert.select_usuario_servidor()
+    return render_template('agregar_rioter.html', usuario=usuario, servidor=servidor)
 
 
 @app.route('/agregar_batalla.html', methods=['GET', 'POST'])
 def agregar_batalla():
-    return render_template('agregar_batalla.html')
+    usuario1 = consultas_insert.select_usuario_id()
+    servidor1 = consultas_insert.select_usuario_servidor()
+    mazo1 = consultas_insert.select_mazo_id()
+    carta1 = consultas_insert.select_carta_id()
+    usuario2 = consultas_insert.select_usuario_id()
+    servidor2 = consultas_insert.select_usuario_servidor()
+    mazo2 = consultas_insert.select_mazo_id()
+    carta2 = consultas_insert.select_carta_id()
+    usuario_ganador = consultas_insert.select_usuario_id()
+    return render_template('agregar_batalla.html', usuario1=usuario1, servidor1=servidor1, mazo1=mazo1, carta1=carta1,
+                           usuario2=usuario2, servidor2=servidor2, mazo2=mazo2, carta2=carta2,
+                           usuario_ganador=usuario_ganador)
 
 
 @app.route('/agregar_region.html', methods=['GET', 'POST'])
@@ -80,12 +94,17 @@ def agregar_region():
 
 @app.route('/agregar_mazo.html', methods=['GET', 'POST'])
 def agregar_mazo():
-    return render_template('agregar_mazo.html')
+    usuario = consultas_insert.select_usuario_id()
+    servidor = consultas_insert.select_usuario_servidor()
+    carta = consultas_insert.select_carta_id()
+    return render_template('agregar_mazo.html', usuario=usuario, servidor=servidor, carta=carta)
 
 
 @app.route('/agregar_invocador.html', methods=['GET', 'POST'])
 def agregar_invocador():
-    return render_template('agregar_invocador.html')
+    usuario = consultas_insert.select_rioter_usuario()
+    servidor = consultas_insert.select_rioter_servidor()
+    return render_template('agregar_invocador.html', usuario=usuario, servidor=servidor)
 
 
 @app.route('/agregar_division.html', methods=['GET', 'POST'])
@@ -95,7 +114,8 @@ def agregar_division():
 
 @app.route('/agregar_carta.html', methods=['GET', 'POST'])
 def agregar_carta():
-    return render_template('agregar_carta.html')
+    region = consultas_insert.select_region_nombre()
+    return render_template('agregar_carta.html', region=region)
 
 
 if __name__ == "__main__":

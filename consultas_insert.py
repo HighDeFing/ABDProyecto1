@@ -146,9 +146,9 @@ def select_carta_id():
     # conn = cx_Oracle.connect('TRYNDAMERE/a1234@localhost/orcl')
     cur = conn.cursor()
     consul = """
-                    SELECT DISTINCT(id)
-                    FROM tryndamere.carta
-                    """
+            SELECT DISTINCT(id)
+            FROM tryndamere.carta
+            """
     cur.execute(consul)
     return cur
     cur.close()

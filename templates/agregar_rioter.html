@@ -62,21 +62,19 @@
 										<div class="row gtr-uniform">
                                             <!-- Break -->
                                            <div class="col-12-xsmall">
-												<select name="agregar_rioter_usuario" id="agregar_rioter_usuario">
+												<select name="agregar_rioter_usuario" id="agregar_rioter_usuario" required>
 													<option value="">- Select Usuario -</option>
-													<option value="BR">BR</option>
-													<option value="EUNE">EUNE</option>
-													<option value="LAN">LAN</option>
-													<option value="LAS">LAS</option>
+													{% for line in usuario %}
+													<option value="{{line[0]}}">{{line[0]}}</option>
+													{% endfor %}
 												</select>
 											</div>
 											<div class="col-12-xsmall">
-												<select name="agregar_rioter_servidor" id="agregar_rioter_servidor">
+												<select name="agregar_rioter_servidor" id="agregar_rioter_servidor" required>
 													<option value="">- Select Servidor -</option>
-													<option value="BR">BR</option>
-													<option value="EUNE">EUNE</option>
-													<option value="LAN">LAN</option>
-													<option value="LAS">LAS</option>
+													{% for line in servidor %}
+													<option value="{{line[0]}}">{{line[0]}}</option>
+													{% endfor %}
 												</select>
 											</div>
 											<div class="col-8-xlarge">

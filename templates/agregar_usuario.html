@@ -62,94 +62,59 @@
 										<div class="row gtr-uniform">
                                             <!-- Break -->
                                             <div class="col-4 col-12-xsmall">
-												<input type="text" name="agregar_usuario_id" id="agregar_usuario_id" value="" placeholder="ID" />
+												<input type="text" name="agregar_usuario_id" id="agregar_usuario_id" value="" placeholder="ID" required/>
 											</div>
 											<div class="col-12-xsmall">
-												<select name="agregar_usuario_servidor" id="agregar_usuario_servidor">
+												<select name="agregar_usuario_servidor" id="agregar_usuario_servidor" required>
 													<option value="">- Select Servidor -</option>
-													{% for line in consulta_user%}
-															<option value="{{line[1]}}">{{line[1]}}</option>
+													{% for line in servidor%}
+															<option value="{{line[0]}}">{{line[0]}}</option>
 													{% endfor %}
 												</select>
 											</div>
                                             <div class="col-6 col-12-xsmall">
-												<input type="email" name="email" id="email" value="" placeholder="Correo" />
+												<input type="email" name="agregar_usuario_correo" id="email" value="" placeholder="Correo" />
 											</div>
                                             <div class="col-4 col-12-xsmall">
-												<input type="password" name="password" id="password" value="" placeholder="Contraseña" />
+												<input type="password" name="agregar_usuario_contrasena" id="contrasena" value="" placeholder="Contraseña" />
 											</div>
                                             <div class="col-4 col-12-xsmall">
-												<input type="text" name="nombre" id="nombre" value="" placeholder="Nombre" />
+												<input type="text" name="agregar_usuario_nombre" id="agregar_usuario_nombre" value="" placeholder="Nombre" />
 											</div>
                                             <div class="col-4 col-12-xsmall">
-												<input type="text" name="apellido" id="apellido" value="" placeholder="Apellido" />
+												<input type="text" name="agregar_usuario_apellido" id="agregar_usuario_apellido" value="" placeholder="Apellido" />
 											</div>
                                             <div class="col-4 col-12-xsmall">
-												<input type="tel" name="telefono" id="telefono" value="" placeholder="Telefono" />
+												<input type="tel" name="agregar_usuario_telefono" id="agregar_usuario_telefono" value="" placeholder="Telefono" />
 											</div>
 											</br>
 											<h4>Fecha</h4>
                                              <div class="col-9 10-xlarge">
-												<input type="date" name="fecha_nacimiento" id="date" value="" placeholder="Fecha_nacimiento" />
+												<input type="date" name="agregar_usuario_fecha_nacimiento" id="date" value="" placeholder="Fecha_nacimiento" />
 											</div>
 											</br>
 											<!-- Break -->
 											</br>
 											<h4>Sexo</h4>
                                             <div class="col-4 col-12-small">
-												<input type="radio" id="femenino" name="radio">
-												<label for="femenino">Femenino</label>
+												<input type="radio" id="F" name="agregar_usuario_sexo" value="F">
+												<label for="F">Femenino</label>
 											</div>
 											<div class="col-4 col-12-small">
-												<input type="radio" id="masculino" name="radio">
-												<label for="masculino">Masculino</label>
+												<input type="radio" id="M" name="agregar_usuario_sexo" value="M">
+												<label for="M">Masculino</label>
 											</div>
                                             <div class="col-12">
-												<select name="category" id="division">
+												<select id="division" name="agregar_usuario_division" required>
 													<option value="">- Select Division -</option>
-													<option value="SR">Sin Ranking</option>
-													<option value="PROV">Provisional</option>
-													<option value="HIV">Hierro 4</option>
-													<option value="HIII">Hierro 3</option>
-													<option value="HII">Hierro 2</option>
-													<option value="HI">Hierro 1</option>
-													<option value="BIV">Bronce 4</option>
-													<option value="BIII">Bronce 3</option>
-													<option value="BII">Bronce 2</option>
-													<option value="BI">Bronce 1</option>
-													<option value="PIV">Plata 4</option>
-													<option value="PIII">Plata 3</option>
-													<option value="PII">Plata 2</option>
-													<option value="PI">Plata 1</option>
-													<option value="OIV">Oro 4</option>
-													<option value="OIII">Oro 3</option>
-													<option value="OII">Oro 2</option>
-													<option value="OI">Oro 1</option>
-													<option value="PLIV">Platino 4</option>
-													<option value="PLIII">Platino 3</option>
-													<option value="PLII">Platino 2</option>
-													<option value="PLI">Platino 1</option>
-													<option value="DIV">Diamante 4</option>
-													<option value="DIII">Diamante 3</option>
-													<option value="DII">Diamante 2</option>
-													<option value="DI">Diamante 1</option>
-													<option value="MIV">Master 4</option>
-													<option value="MIII">Master 3</option>
-													<option value="MII">Master 2</option>
-													<option value="MI">Master 1</option>
-													<option value="GMIV">Grandmaster 4</option>
-													<option value="GMIII">Grandmaster 3</option>
-													<option value="GMII">Grandmaster 2</option>
-													<option value="GMI">Grandmaster 1</option>
-													<option value="CIV">Challenger 4</option>
-													<option value="CIII">Challenger 3</option>
-													<option value="CII">Challenger 2</option>
-													<option value="CI">Challenger 1</option>
+													{% for line in division %}
+													<option value="{{line[0]}}">{{line[0]}}</option>
+													{% endfor %}
 												</select>
 											</div>
 											</br>
 											<div class="col-4 col-12-xsmall">
-												<input type="number" name="puntos" id="puntos" value="" placeholder="Puntos" />
+												<input type="number" name="agregar_usuario_puntos" id="puntos" value="" placeholder="Puntos" />
 											</div>
 											<!-- Break -->
 											</br>
@@ -199,7 +164,6 @@
 				</div>
 			</footer>
        <!-- Footer -->
-
 
 <!-- Assest script -->
 <script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>

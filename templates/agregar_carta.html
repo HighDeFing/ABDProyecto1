@@ -62,7 +62,7 @@
 										<div class="row gtr-uniform">
                                             <!-- Break -->
                                             <div class="col-4 col-12-xsmall">
-												<input type="text" name="agregar_carta_id" id="agregar_carta_id" value="" placeholder="ID" />
+												<input type="text" name="agregar_carta_id" id="agregar_carta_id" value="" placeholder="ID" required/>
 											</div>
 											<div class="col-4 col-12-xsmall">
 												<input type="text" name="agregar_carta_tipo" id="agregar_carta_tipo" value="" placeholder="Tipo" />
@@ -77,22 +77,21 @@
 												<input type="text" name="agregar_carta_mejora" id="agregar_carta_mejora" value="" placeholder="Mejora" />
 											</div>
 											<div class="col-12-xsmall">
-												<select name="agregar_carta_region" id="agregar_carta_region">
+												<select name="agregar_carta_region" id="agregar_carta_region" required>
 													<option value="">- Select Region -</option>
-													<option value="BR">BR</option>
-													<option value="EUNE">EUNE</option>
-													<option value="LAN">LAN</option>
-													<option value="LAS">LAS</option>
+													{% for line in region %}
+													<option value="{{line[0]}}">{{line[0]}}</option>
+													{% endfor %}
 												</select>
 											</div>
-											<div class="col-4 col-12-xsmall">Costo:
-												<input type="number" name="agregar_carta_costo" id="agregar_carta_costo" value="" placeholder="Costo" />
+											<div class="col-8-xlarge">Costo:
+												<input type="number" name="agregar_carta_costo" id="agregar_carta_costo" min="0" value="" placeholder="Costo" />
 											</div>
-											<div class="col-4 col-12-xsmall">Ataque:
-												<input type="number" name="agregar_carta_ataque" id="agregar_carta_ataque" value="" placeholder="Ataque" />
+											<div class="col-8-xlarge">Ataque:
+												<input type="number" name="agregar_carta_ataque" id="agregar_carta_ataque" min="0" value="" placeholder="Ataque" />
 											</div>
-											<div class="col-4 col-12-xsmall">Vida:
-												<input type="number" name="agregar_carta_vida" id="agregar_carta_vida" value="" placeholder="Vida" />
+											<div class="col-8-xlarge">Vida:
+												<input type="number" name="agregar_carta_vida" id="agregar_carta_vida" min="0" value="" placeholder="Vida" />
 											</div>
 											<div class="col-4 col-12-xsmall">
 												<input type="text" name="agregar_carta_rareza" id="agregar_carta_rareza" value="" placeholder="Rareza" />

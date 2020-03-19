@@ -62,40 +62,37 @@
 										<div class="row gtr-uniform">
                                             <!-- Break -->
                                             <div class="col-4 col-12-xsmall">
-												<input type="text" name="agregar_mazo_id" id="agregar_usuario_id" value="" placeholder="ID" />
+												<input type="text" name="agregar_mazo_id" id="agregar_usuario_id" value="" placeholder="ID" required/>
 											</div>
 											<div class="col-12-xsmall">
-												<select name="agregar_mazo_usuario" id="agregar_mazo_usuario">
+												<select name="agregar_mazo_usuario" id="agregar_mazo_usuario" required>
 													<option value="">- Select Usuario -</option>
-													<option value="BR">BR</option>
-													<option value="EUNE">EUNE</option>
-													<option value="LAN">LAN</option>
-													<option value="LAS">LAS</option>
+													{% for line in usuario %}
+													<option value="{{line[0]}}">{{line[0]}}</option>
+													{% endfor %}
 												</select>
 											</div>
 											<div class="col-12-xsmall">
-												<select name="agregar_mazo_servidor" id="agregar_mazo_servidor">
+												<select name="agregar_mazo_servidor" id="agregar_mazo_servidor" required>
 													<option value="">- Select Servidor -</option>
-													<option value="BR">BR</option>
-													<option value="EUNE">EUNE</option>
-													<option value="LAN">LAN</option>
-													<option value="LAS">LAS</option>
+													{% for line in servidor %}
+													<option value="{{line[0]}}">{{line[0]}}</option>
+													{% endfor %}
 												</select>
 											</div>
 											<div class="col-12-xsmall">
-												<select name="agregar_mazo_carta" id="agregar_mazo_carta">
+												<select name="agregar_mazo_carta" id="agregar_mazo_carta" required>
 													<option value="">- Select Carta -</option>
-													<option value="BR">BR</option>
-													<option value="EUNE">EUNE</option>
-													<option value="LAN">LAN</option>
-													<option value="LAS">LAS</option>
+													{% for line in carta %}
+													<option value="{{line[0]}}">{{line[0]}}</option>
+													{% endfor %}
 												</select>
 											</div>
 											<div class="col-8-xlarge">
 												<input type="text" name="agregar_mazo_nombre" id="agregar_mazo_nombre" value="" placeholder="Nombre" />
 											</div>
 											<div class="col-12-xsmall">
-												<input type="number" name="agregar_mazo_cantidad" id="agregar_mazo_cantidad" value="" placeholder="Cantidad" />
+												<input type="number" name="agregar_mazo_cantidad" min="0" id="agregar_mazo_cantidad" value="" placeholder="Cantidad" />
 											</div>
 
 											<div class="col-12">

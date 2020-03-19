@@ -60,91 +60,82 @@
 										<div class="row gtr-uniform">
                                             <!-- Break -->
                                             <div class="col-4 col-12-xsmall">
-												<input type="text" name="agregar_batalla_id" id="agregar_batalla_id" value="" placeholder="ID" />
+												<input type="text" name="agregar_batalla_id" id="agregar_batalla_id" value="" placeholder="ID" required/>
 											</div>
 											<div class="col-12-xsmall">
-												<select name="agregar_batalla_usuario1" id="agregar_batalla_usuario1">
+												<select name="agregar_batalla_usuario1" id="agregar_batalla_usuario1" required>
 													<option value="">- Select Usuario 1 -</option>
-													<option value="BR">BR</option>
-													<option value="EUNE">EUNE</option>
-													<option value="LAN">LAN</option>
-													<option value="LAS">LAS</option>
+													{% for line in usuario1 %}
+													<option value="{{line[0]}}">{{line[0]}}</option>
+													{% endfor %}
 												</select>
 											</div>
 											<div class="col-12-xsmall">
-												<select name="agregar_batalla_servidor1" id="agregar_batalla_servidor1">
+												<select name="agregar_batalla_servidor1" id="agregar_batalla_servidor1" required>
 													<option value="">- Select Servidor 1 -</option>
-													<option value="BR">BR</option>
-													<option value="EUNE">EUNE</option>
-													<option value="LAN">LAN</option>
-													<option value="LAS">LAS</option>
+													{% for line in servidor1 %}
+													<option value="{{line[0]}}">{{line[0]}}</option>
+													{% endfor %}
 												</select>
 											</div>
 											<div class="col-12-xsmall">
-												<select name="agregar_batalla_mazo1" id="agregar_batalla_mazo1">
+												<select name="agregar_batalla_mazo1" id="agregar_batalla_mazo1" required>
 													<option value="">- Select Mazo 1 -</option>
-													<option value="BR">BR</option>
-													<option value="EUNE">EUNE</option>
-													<option value="LAN">LAN</option>
-													<option value="LAS">LAS</option>
+													{% for line in mazo1 %}
+													<option value="{{line[0]}}">{{line[0]}}</option>
+													{% endfor %}
 												</select>
 											</div>
 											<div class="col-12-xsmall">
-												<select name="agregar_batalla_carta1" id="agregar_batalla_carta1">
+												<select name="agregar_batalla_carta1" id="agregar_batalla_carta1" required>
 													<option value="">- Select Carta 1 -</option>
-													<option value="BR">BR</option>
-													<option value="EUNE">EUNE</option>
-													<option value="LAN">LAN</option>
-													<option value="LAS">LAS</option>
+													{% for line in carta1 %}
+													<option value="{{line[0]}}">{{line[0]}}</option>
+													{% endfor %}
 												</select>
 											</div>
 											<div class="col-12-xsmall">
-												<select name="agregar_batalla_usuario2" id="agregar_batalla_usuario2">
+												<select name="agregar_batalla_usuario2" id="agregar_batalla_usuario2" required>
 													<option value="">- Select Usuario 2 -</option>
-													<option value="BR">BR</option>
-													<option value="EUNE">EUNE</option>
-													<option value="LAN">LAN</option>
-													<option value="LAS">LAS</option>
+													{% for line in usuario2 %}
+													<option value="{{line[0]}}">{{line[0]}}</option>
+													{% endfor %}
 												</select>
 											</div>
 											<div class="col-12-xsmall">
-												<select name="agregar_batalla_servidor2" id="agregar_batalla_servidor2">
+												<select name="agregar_batalla_servidor2" id="agregar_batalla_servidor2" required>
 													<option value="">- Select Servidor 2 -</option>
-													<option value="BR">BR</option>
-													<option value="EUNE">EUNE</option>
-													<option value="LAN">LAN</option>
-													<option value="LAS">LAS</option>
+													{% for line in servidor2 %}
+													<option value="{{line[0]}}">{{line[0]}}</option>
+													{% endfor %}
 												</select>
 											</div>
 											<div class="col-12-xsmall">
-												<select name="agregar_batalla_mazo2" id="agregar_batalla_mazo2">
+												<select name="agregar_batalla_mazo2" id="agregar_batalla_mazo2" required>
 													<option value="">- Select Mazo 2 -</option>
-													<option value="BR">BR</option>
-													<option value="EUNE">EUNE</option>
-													<option value="LAN">LAN</option>
-													<option value="LAS">LAS</option>
+													{% for line in mazo2 %}
+													<option value="{{line[0]}}">{{line[0]}}</option>
+													{% endfor %}
 												</select>
 											</div>
 											<div class="col-12-xsmall">
-												<select name="agregar_batalla_carta2" id="agregar_batalla_carta2">
+												<select name="agregar_batalla_carta2" id="agregar_batalla_carta2" required>
 													<option value="">- Select Carta 2 -</option>
-													<option value="BR">BR</option>
-													<option value="EUNE">EUNE</option>
-													<option value="LAN">LAN</option>
-													<option value="LAS">LAS</option>
+													{% for line in carta2 %}
+													<option value="{{line[0]}}">{{line[0]}}</option>
+													{% endfor %}
 												</select>
 											</div>
 											<div class="col-12-xsmall">
 												<select name="agregar_batalla_ganador" id="agregar_batalla_ganador">
 													<option value="">- Select Ganador -</option>
-													<option value="BR">BR</option>
-													<option value="EUNE">EUNE</option>
-													<option value="LAN">LAN</option>
-													<option value="LAS">LAS</option>
+													{% for line in usuario_ganador %}
+													<option value="{{line[0]}}">{{line[0]}}</option>
+													{% endfor %}
 												</select>
 											</div>
 											<div class="col-4 col-12-xsmall">
-												<input type="number" name="agregar_batalla_puntos" id="agregar_batalla_puntos" value="" placeholder="Puntos" />
+												<input type="number" name="agregar_batalla_puntos" id="agregar_batalla_puntos" min="0" value="" placeholder="Puntos"/>
 											</div>
 
 
