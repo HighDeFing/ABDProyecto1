@@ -96,3 +96,5 @@ EXECUTE agregar_mazo ('01', 'UID_01', 'LAN', '0008', 'Sin piedad', 3);
 EXECUTE agregar_mazo ('01', 'UID_01', 'LAN', '0009', 'Sin piedad', 3);
 --agregar batalla
 EXECUTE agregar_batalla ('A00000','UID_00', 'LAN', '00', '0000', 'UID_01','LAN', '01','0000', 'UID_00', 50);
+
+--EXECUTE agregar_usuario ('UID_03', 'LAS', 'mercyospina@gmail.com', '...', 'Mercy', 'Ospina', '+58 414 760 9563', '30-07-1996', 'F', 'CI', 0);

@@ -1,5 +1,7 @@
 from flask import Flask, escape, request, redirect, render_template
 import consultas
+import consultas_insert
+import inserts
 import sys
 
 app = Flask(__name__)
@@ -41,9 +43,19 @@ def hello():
                            dec_a=decima_a, dec_b=decima_b, dec_c=decima_c, dec_d=decima_d, dec_e=decima_e, dec_f=decima_f, dec_g=decima_g, dec_h=decima_h, dec_i=decima_i, dec_ind=decima_index)
 
 
-@app.route('/insert.html', methods=['GET', 'POST'])
-def insert():
-    return render_template('insert.html')
+@app.route('/insert_home.html', methods=['GET', 'POST'])
+def insert_home():
+    return render_template('insert_home.html')
+
+
+@app.route('/agregar_usuario.html', methods=['GET', 'POST'])
+def render_insert():
+    consulta_usuarios = consultas_insert.select_usuarios()
+    etwas = render_template('agregar_usuario.html', consulta_user=consulta_usuarios)
+    #inserts.parse_agregar_usuario()
+    # other = request.form.get('projectFilepath')
+    # print(other, file=sys.stdout)
+    return etwas
 
 
 if __name__ == "__main__":
