@@ -13,3 +13,4 @@ def select_usuarios():
     return cur
     cur.close()
     conn.close()
+

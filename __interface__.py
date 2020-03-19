@@ -49,13 +49,53 @@ def insert_home():
 
 
 @app.route('/agregar_usuario.html', methods=['GET', 'POST'])
-def render_insert():
+def agregar_usuario():
     consulta_usuarios = consultas_insert.select_usuarios()
     etwas = render_template('agregar_usuario.html', consulta_user=consulta_usuarios)
     #inserts.parse_agregar_usuario()
     # other = request.form.get('projectFilepath')
     # print(other, file=sys.stdout)
     return etwas
+
+
+@app.route('/agregar_servidor.html', methods=['GET', 'POST'])
+def agregar_servidor():
+    return render_template('agregar_servidor.html')
+
+
+@app.route('/agregar_rioter.html', methods=['GET', 'POST'])
+def agregar_rioter():
+    return render_template('agregar_rioter.html')
+
+
+@app.route('/agregar_batalla.html', methods=['GET', 'POST'])
+def agregar_batalla():
+    return render_template('agregar_batalla.html')
+
+
+@app.route('/agregar_region.html', methods=['GET', 'POST'])
+def agregar_region():
+    return render_template('agregar_region.html')
+
+
+@app.route('/agregar_mazo.html', methods=['GET', 'POST'])
+def agregar_mazo():
+    return render_template('agregar_mazo.html')
+
+
+@app.route('/agregar_invocador.html', methods=['GET', 'POST'])
+def agregar_invocador():
+    return render_template('agregar_invocador.html')
+
+
+@app.route('/agregar_division.html', methods=['GET', 'POST'])
+def agregar_division():
+    return render_template('agregar_division.html')
+
+
+@app.route('/agregar_carta.html', methods=['GET', 'POST'])
+def agregar_carta():
+    return render_template('agregar_carta.html')
 
 
 if __name__ == "__main__":
