@@ -307,3 +307,5 @@ ALTER TABLE tryndamere.usuario
     ADD CONSTRAINT usuario_servidor_fk FOREIGN KEY ( servidor )
         REFERENCES tryndamere.servidor ( id )
     NOT DEFERRABLE;
+
+ALTER TABLE tryndamere.invocador ADD CONSTRAINT invocador__un UNIQUE ( nombre_invocador );
