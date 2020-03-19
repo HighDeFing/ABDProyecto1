@@ -1,74 +1,141 @@
---Roles
-ALTER SESSION SET "_ORACLE_SCRIPT"=TRUE;
+--1
+CREATE OR REPLACE PROCEDURE agregar_servidor(
+    id IN SERVIDOR.id %type,
+    nombre IN SERVIDOR.nombre %type,
+    inauguracion IN SERVIDOR.inauguracion %type,
+    idiomas IN SERVIDOR.idiomas %type,
+    ubicacion IN SERVIDOR.ubicacion %type,
+    ip IN SERVIDOR.ip %type)
+is BEGIN
+    INSERT INTO SERVIDOR VALUES (id, nombre, inauguracion, idiomas, ubicacion, ip);
+    dbms_output.put_line ('INSERCION EXITOSA');
+END agregar_servidor;
+/
+--2
+CREATE OR REPLACE PROCEDURE agregar_division(
+    codigo IN DIVISION.codigo %type,
+    nombre IN DIVISION.nombre %type,
+    descripcion IN DIVISION.descripcion %type
+    )
+IS BEGIN
+    INSERT INTO DIVISION VALUES (codigo, nombre, descripcion);
+    dbms_output.put_line ('INSERCION EXITOSA');
+END agregar_division;
+/
+--3
+CREATE OR REPLACE PROCEDURE agregar_region(
+    nombre IN REGION.nombre %type,
+    tipo_de_gobierno IN REGION.tipo_de_gobierno %type,
+    nivel_de_tecnologia IN REGION.nivel_de_tecnologia %type,
+    tolerancia_a_la_magia IN REGION.tolerancia_a_la_magia %type,
+    descripcion_ambiente IN REGION.descripcion_ambiente %type
+)
+IS BEGIN
+    INSERT INTO REGION VALUES (nombre, tipo_de_gobierno, nivel_de_tecnologia, tolerancia_a_la_magia,
+    descripcion_ambiente);
+    dbms_output.put_line ('INSERCION EXITOSA');
+END agregar_region;
+/
+--4
+CREATE OR REPLACE PROCEDURE agregar_carta(
+    id IN CARTA.id %type,
+    tipo IN CARTA.tipo %type,
+    nombre IN CARTA.nombre %type,
+    descripcion IN CARTA.descripcion %type,
+    mejora IN CARTA.mejora %type,
+    region IN CARTA.region %type,
+    costo IN CARTA.costo %type,
+    ataque IN CARTA.ataque %type,
+    vida IN CARTA.vida %type,
+    rareza IN CARTA.rareza %type,
+    efecto IN CARTA.efecto %type,
+    palabra_clave IN CARTA.palabra_clave %type
+)
+IS BEGIN
+    INSERT INTO CARTA VALUES (id, tipo, nombre, descripcion, mejora, region, costo, ataque, vida,
+    rareza, efecto, palabra_clave);
+    dbms_output.put_line ('INSERCION EXITOSA');
+END agregar_carta;
+/
+--5
+CREATE OR REPLACE PROCEDURE agregar_usuario(
+    id IN USUARIO.id %type,
+    servidor IN USUARIO.servidor %type,
+    correo IN USUARIO.correo %type,
+    contrasena IN USUARIO.contrasena %type,
+    nombre IN USUARIO.nombre %type,
+    apellido IN USUARIO.apellido %type,
+    telefono IN USUARIO.telefono %type,
+    fecha_nacimiento IN USUARIO.fecha_nacimiento %type,
+    sexo IN USUARIO.sexo %type,
+    division IN USUARIO.division %type,
+    puntos IN USUARIO.puntos %type
+)
+IS BEGIN
+    INSERT INTO USUARIO VALUES (id, servidor, correo, contrasena, nombre, apellido, telefono,
+    fecha_nacimiento, sexo, division, puntos);
+    dbms_output.put_line ('INSERCION EXITOSA');
+END agregar_usuario;
+/
+--6
+CREATE OR REPLACE PROCEDURE agregar_rioter(
+    usuario IN RIOTER.usuario %type,
+    servidor IN RIOTER.servidor %type,
+    nombre_invocador IN RIOTER.nombre_invocador %type,
+    fecha_contrato_inicio IN RIOTER.fecha_contrato_inicio %type,
+    fecha_contrato_fin IN RIOTER.fecha_contrato_fin %type,
+    salario IN RIOTER.salario %type
+)
+IS BEGIN
+    INSERT INTO RIOTER VALUES (usuario, servidor, nombre_invocador, fecha_contrato_inicio,
+    fecha_contrato_fin, salario);
+    dbms_output.put_line ('INSERCION EXITOSA');
+END agregar_rioter;
+/
+--7
+CREATE OR REPLACE PROCEDURE agregar_invocador(
+    usuario IN INVOCADOR.usuario %type,
+    servidor IN INVOCADOR.servidor %type,
+    nombre_invocador IN INVOCADOR.nombre_invocador %type,
+    fecha_creacion IN INVOCADOR.fecha_creacion %type
+)
+IS BEGIN
+    INSERT INTO INVOCADOR VALUES (usuario, servidor, nombre_invocador, fecha_creacion);
+    dbms_output.put_line ('INSERCION EXITOSA');
+END agregar_invocador;
+/
+--8
+CREATE OR REPLACE PROCEDURE agregar_mazo(
+    id IN MAZO.id %type,
+    usuario IN MAZO.usuario %type,
+    servidor IN MAZO.servidor %type,
+    carta IN MAZO.carta %type,
+    nombre IN MAZO.nombre %type,
+    cantidad IN MAZO.cantidad %type
+)
+IS BEGIN
+    INSERT INTO MAZO VALUES (id, usuario, servidor, carta, nombre, cantidad);
+    dbms_output.put_line ('INSERCION EXITOSA');
+END agregar_mazo;
+/
+--9
+CREATE OR REPLACE PROCEDURE agregar_batalla(
+    id IN BATALLA.id %type,
+    usuario1 IN BATALLA.usuario1 %type,
+    servidor1 IN BATALLA.servidor1 %type,
+    mazo1 IN BATALLA.mazo1 %type,
+    carta1 IN BATALLA.carta1 %type,
+    usuario2 IN BATALLA.usuario2 %type,
+    servidor2 IN BATALLA.servidor2 %type,
+    mazo2 IN BATALLA.mazo2 %type,
+    carta2 IN BATALLA.carta2 %type,
+    ganador IN BATALLA.ganador %type,
+    puntos IN BATALLA.puntos %type
+)
+IS BEGIN
+    INSERT INTO BATALLA VALUES (id, usuario1, servidor1, mazo1, carta1,
+    usuario2, servidor2, mazo2, carta2, ganador, puntos);
+    dbms_output.put_line ('INSERCION EXITOSA');
+END agregar_batalla;
+/
 
---rol para los select
-DROP ROLE TRYNDAMERE_select;
-CREATE ROLE TRYNDAMERE_select;
-
-REVOKE SELECT ON tryndamere.batalla FROM TRYNDAMERE_select;
-REVOKE SELECT ON tryndamere.carta FROM TRYNDAMERE_select;
-REVOKE SELECT ON tryndamere.division FROM TRYNDAMERE_select;
-REVOKE SELECT ON tryndamere.invocador FROM TRYNDAMERE_select;
-REVOKE SELECT ON tryndamere.mazo FROM TRYNDAMERE_select;
-REVOKE SELECT ON tryndamere.region FROM TRYNDAMERE_select;
-REVOKE SELECT ON tryndamere.rioter FROM TRYNDAMERE_select;
-REVOKE SELECT ON tryndamere.servidor FROM TRYNDAMERE_select;
-REVOKE SELECT ON tryndamere.usuario FROM TRYNDAMERE_select;
-
-GRANT SELECT ON tryndamere.batalla TO TRYNDAMERE_select;
-GRANT SELECT ON tryndamere.carta TO TRYNDAMERE_select;
-GRANT SELECT ON tryndamere.division TO TRYNDAMERE_select;
-GRANT SELECT ON tryndamere.invocador TO TRYNDAMERE_select;
-GRANT SELECT ON tryndamere.mazo TO TRYNDAMERE_select;
-GRANT SELECT ON tryndamere.region TO TRYNDAMERE_select;
-GRANT SELECT ON tryndamere.rioter TO TRYNDAMERE_select;
-GRANT SELECT ON tryndamere.servidor TO TRYNDAMERE_select;
-GRANT SELECT ON tryndamere.usuario TO TRYNDAMERE_select;
-
---usuario para los select
-DROP USER TRYNDAMERE_externo_select CASCADE;
-CREATE USER TRYNDAMERE_externo_select IDENTIFIED BY a1234;
-GRANT CONNECT, CREATE SESSION TO TRYNDAMERE_externo_select;
-GRANT TRYNDAMERE_select to TRYNDAMERE_externo_select;
-
-ALTER USER TRYNDAMERE_externo_select DEFAULT ROLE TRYNDAMERE_select;
-
---rol para los insert
-DROP ROLE TRYNDAMERE_insert;
-CREATE ROLE TRYNDAMERE_insert;
-
-REVOKE INSERT ON tryndamere.batalla FROM TRYNDAMERE_insert;
-REVOKE INSERT ON tryndamere.carta FROM TRYNDAMERE_insert;
-REVOKE INSERT ON tryndamere.division FROM TRYNDAMERE_insert;
-REVOKE INSERT ON tryndamere.invocador FROM TRYNDAMERE_insert;
-REVOKE INSERT ON tryndamere.mazo FROM TRYNDAMERE_insert;
-REVOKE INSERT ON tryndamere.region FROM TRYNDAMERE_insert;
-REVOKE INSERT ON tryndamere.rioter FROM TRYNDAMERE_insert;
-REVOKE INSERT ON tryndamere.servidor FROM TRYNDAMERE_insert;
-REVOKE INSERT ON tryndamere.usuario FROM TRYNDAMERE_insert;
-
-GRANT INSERT ON tryndamere.batalla TO TRYNDAMERE_insert;
-GRANT INSERT ON tryndamere.carta TO TRYNDAMERE_insert;
-GRANT INSERT ON tryndamere.division TO TRYNDAMERE_insert;
-GRANT INSERT ON tryndamere.invocador TO TRYNDAMERE_insert;
-GRANT INSERT ON tryndamere.mazo TO TRYNDAMERE_insert;
-GRANT INSERT ON tryndamere.region TO TRYNDAMERE_insert;
-GRANT INSERT ON tryndamere.rioter TO TRYNDAMERE_insert;
-GRANT INSERT ON tryndamere.servidor TO TRYNDAMERE_insert;
-GRANT INSERT ON tryndamere.usuario TO TRYNDAMERE_insert;
-
---usuario para los insert
-DROP USER TRYNDAMERE_externo_insert CASCADE;
-CREATE USER TRYNDAMERE_externo_insert IDENTIFIED BY a1234;
-GRANT CONNECT, CREATE SESSION TO TRYNDAMERE_externo_insert;
-GRANT TRYNDAMERE_insert to TRYNDAMERE_externo_insert;
-
-ALTER USER TRYNDAMERE_externo_insert DEFAULT ROLE TRYNDAMERE_insert;
-
---connect TRYNDAMERE_externo_select/a1234;
-
---DROP ROLE TRYNDAMERE_insert;
---CREATE ROLE TRYNDAMERE_insert;
-
---DROP USER TRYNDAMERE_externo_insert CASCADE;
---CREATE USER TRYNDAMERE_externo_insert IDENTIFIED BY a1234;

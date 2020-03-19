@@ -2,7 +2,7 @@
 ALTER SESSION SET nls_date_format = 'dd-mm-yyyy';
 --agregar servidores
 EXECUTE agregar_servidor ('BR', 'Brazil', '13-09-2012', 'Portuguese', 'Sao Paulo, SP, Brazil', '104.160.152.3');
-EXECUTE agregar_servidor ('EUNE', 'Europe Nordic and East', '13-07-2010', 'Czech, English, Greek, Hungarian, Polish, Romanian', 'Frankfurt, Germany', '104.160.142.3');
+EXECUTE tryndamere.agregar_servidor ('EUNE', 'Europe Nordic and East', '13-07-2010', 'Czech, English, Greek, Hungarian, Polish, Romanian', 'Frankfurt, Germany', '104.160.142.3');
 EXECUTE agregar_servidor ('LAN', 'Latin America North', '05-06-2013', 'Spanish', 'Miami, FL, United States', '104.160.136.3');
 EXECUTE agregar_servidor ('LAS', 'Latin America South', '05-06-2013', 'Spanish', 'Santiago, Chile', '104.160.137.3');
 --agregar division
