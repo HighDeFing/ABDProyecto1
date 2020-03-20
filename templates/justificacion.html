@@ -7,7 +7,7 @@
 -->
 <html>
 	<head>
-		<title>Agregar Mazo</title>
+		<title>Justificacion</title>
         <meta charset="UTF-8"/>
         <title>Home</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -40,13 +40,13 @@
                     <li><a href="agregar_rioter.html">Agregar Rioter</a></li>
                     <li><a href="agregar_servidor.html">Agregar Servidor</a></li>
                     <li><a href="agregar_usuario.html">Agregar Usuario</a></li>
-					<li><a href="justificacion.html">Justificacion</a></li>
+                    <li><a href="justificacion.html">Justificacion</a></li>
 				</ul>
 			</nav>
 
 		<!-- Heading -->
 			<div id="heading" >
-				<h1>Agregar Mazo</h1>
+				<h1>Justificacion</h1>
 			</div>
 
 		<!-- Main -->
@@ -55,57 +55,9 @@
 					<div class="content">
                         <div class="row">
 							<div class="col-6 col-12-medium">
-					<!-- Elements -->
-                                <!-- Form -->
-							<!--Primer insert-->
-								<div id="description_button_1" class="table-wrapper">
-									<form method="post" action="{{url_for('agregar_mazo')}}" class="col-4 col-12-xsmall">
 										<div class="row gtr-uniform">
-                                            <!-- Break -->
-                                            <div class="col-4 col-12-xsmall">
-												<input type="text" name="agregar_mazo_id" id="agregar_usuario_id" value="" placeholder="ID" required/>
-											</div>
-											<div class="col-12-xsmall">
-												<select name="agregar_mazo_usuario" id="agregar_mazo_usuario" required>
-													<option value="">- Select Usuario -</option>
-													{% for line in usuario %}
-													<option value="{{line[0]}}">{{line[0]}}</option>
-													{% endfor %}
-												</select>
-											</div>
-											<div class="col-12-xsmall">
-												<select name="agregar_mazo_servidor" id="agregar_mazo_servidor" required>
-													<option value="">- Select Servidor -</option>
-													{% for line in servidor %}
-													<option value="{{line[0]}}">{{line[0]}}</option>
-													{% endfor %}
-												</select>
-											</div>
-											<div class="col-12-xsmall">
-												<select name="agregar_mazo_carta" id="agregar_mazo_carta" required>
-													<option value="">- Select Carta -</option>
-													{% for line in carta %}
-													<option value="{{line[0]}}">{{line[0]}}</option>
-													{% endfor %}
-												</select>
-											</div>
-											<div class="col-8-xlarge">
-												<input type="text" name="agregar_mazo_nombre" id="agregar_mazo_nombre" value="" placeholder="Nombre" />
-											</div>
-											<div class="col-12-xsmall">
-												<input type="number" name="agregar_mazo_cantidad" min="0" id="agregar_mazo_cantidad" value="" placeholder="Cantidad" />
-											</div>
 
-											<div class="col-12">
-												<ul class="actions">
-													<li><input type="submit" value="Submit Form" class="primary" /></li>
-													<li><input type="reset" value="Reset" /></li>
-												</ul>
-											</div>
-										</div>
-									</form>
-								</div>
-						<!--Primer insert-->
+                                        </div>
 							</div>
 						</div>
                     </div>
