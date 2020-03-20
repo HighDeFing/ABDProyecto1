@@ -43,6 +43,11 @@ def hello():
                            dec_a=decima_a, dec_b=decima_b, dec_c=decima_c, dec_d=decima_d, dec_e=decima_e, dec_f=decima_f, dec_g=decima_g, dec_h=decima_h, dec_i=decima_i, dec_ind=decima_index)
 
 
+@app.route('/justificacion.html', methods=['GET', 'POST'])
+def render_justificacion():
+    return render_template('justificacion.html')
+
+
 @app.route('/insert_home.html', methods=['GET', 'POST'])
 def insert_home():
     return render_template('insert_home.html')
