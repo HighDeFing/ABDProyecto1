@@ -9,5 +9,3 @@ CREATE OR REPLACE TRIGGER ganador_batalla
     END IF;
   END; 
 /
-
-CREATE OR REPLACE TRIGGER 
