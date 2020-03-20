@@ -5,7 +5,7 @@ CREATE OR REPLACE TRIGGER ganador_batalla
   
   BEGIN
     IF (:new.ganador =! :new.usuario1) OR (:new.ganador =! :new.usuario2) THEN
-    raise_application_error(-20000, 'Dato erroneo');
+     raise_application_error(-20000, 'Dato erroneo');
     END IF;
   END; 
 /
