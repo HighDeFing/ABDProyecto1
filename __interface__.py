@@ -70,7 +70,9 @@ def agregar_servidor():
 def agregar_rioter():
     usuario = consultas_insert.select_usuario_id()
     servidor = consultas_insert.select_usuario_servidor()
-    return render_template('agregar_rioter.html', usuario=usuario, servidor=servidor)
+    template = render_template('agregar_rioter.html', usuario=usuario, servidor=servidor)
+    inserts.agregar_rioter()
+    return template
 
 
 @app.route('/agregar_batalla.html', methods=['GET', 'POST'])
@@ -84,14 +86,18 @@ def agregar_batalla():
     mazo2 = consultas_insert.select_mazo_id()
     carta2 = consultas_insert.select_carta_id()
     usuario_ganador = consultas_insert.select_usuario_id()
-    return render_template('agregar_batalla.html', usuario1=usuario1, servidor1=servidor1, mazo1=mazo1, carta1=carta1,
+    template = render_template('agregar_batalla.html', usuario1=usuario1, servidor1=servidor1, mazo1=mazo1, carta1=carta1,
                            usuario2=usuario2, servidor2=servidor2, mazo2=mazo2, carta2=carta2,
                            usuario_ganador=usuario_ganador)
+    inserts.agregar_batalla()
+    return template
 
 
 @app.route('/agregar_region.html', methods=['GET', 'POST'])
 def agregar_region():
-    return render_template('agregar_region.html')
+    template = render_template('agregar_region.html')
+    inserts.agregar_region()
+    return template
 
 
 @app.route('/agregar_mazo.html', methods=['GET', 'POST'])
@@ -99,14 +105,18 @@ def agregar_mazo():
     usuario = consultas_insert.select_usuario_id()
     servidor = consultas_insert.select_usuario_servidor()
     carta = consultas_insert.select_carta_id()
-    return render_template('agregar_mazo.html', usuario=usuario, servidor=servidor, carta=carta)
+    template = render_template('agregar_mazo.html', usuario=usuario, servidor=servidor, carta=carta)
+    inserts.agregar_mazo()
+    return template
 
 
 @app.route('/agregar_invocador.html', methods=['GET', 'POST'])
 def agregar_invocador():
     usuario = consultas_insert.select_rioter_usuario()
     servidor = consultas_insert.select_rioter_servidor()
-    return render_template('agregar_invocador.html', usuario=usuario, servidor=servidor)
+    template = render_template('agregar_invocador.html', usuario=usuario, servidor=servidor)
+    inserts.agregar_invocador()
+    return template
 
 
 @app.route('/agregar_division.html', methods=['GET', 'POST'])
@@ -119,7 +129,9 @@ def agregar_division():
 @app.route('/agregar_carta.html', methods=['GET', 'POST'])
 def agregar_carta():
     region = consultas_insert.select_region_nombre()
-    return render_template('agregar_carta.html', region=region)
+    template = render_template('agregar_carta.html', region=region)
+    inserts.agregar_carta()
+    return template
 
 
 if __name__ == "__main__":
