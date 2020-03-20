@@ -8,7 +8,13 @@ de flask con `python __interface__.py` y entrar en `localhost:5000`
 
 Se puede dar el caso de que sea necesario hacer `pip install -r requirements.txt`
 
+### Preview
+
 ![capture](https://github.com/HighDeFing/ABDProyecto1/blob/master/Capture.PNG)
+
+### Modelo relacional
+
+![modelo](https://github.com/HighDeFing/ABDProyecto1/blob/develop/Relational_2.png)
 
 ## Para hacer backup
 
