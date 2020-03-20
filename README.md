@@ -8,6 +8,8 @@ de flask con `python __interface__.py` y entrar en `localhost:5000`
 
 Se puede dar el caso de que sea necesario hacer `pip install -r requirements.txt`
 
+![capture](capture.png)
+
 ## Para hacer backup
 
 Ejecutar el script `ToBackup.sql`
