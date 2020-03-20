@@ -4,6 +4,19 @@ import consultas
 import sys
 import datetime
 
+def agrear_divison():
+    codigo = request.form.get('agregar_division_codigo')
+    nombre = request.form.get('agregar_division_nombre')
+    descripcion = request.form.get('agregar_division_descripcion')
+    if codigo is not None:
+        data = [codigo, nombre, descripcion]
+        conn = cx_Oracle.connect("TRYNDAMERE_externo_insert", "a1234", "localhost/orcl", encoding="UTF-8")
+        cur = conn.cursor()
+        cur.callproc('tryndamere.agregar_division', data)
+        cur.execute("""commit""")
+        cur.close()
+        conn.close()
+    return
 
 def agregar_usuario():
     id = request.form.get('agregar_usuario_id')
@@ -15,24 +28,46 @@ def agregar_usuario():
     telefono = request.form.get('agregar_usuario_telefono')
     fecha_nacimiento = request.form.get('agregar_usuario_fecha_nacimiento')
     #format fecha to dd-mm-yyyy
-    fecha_nacimiento = datetime.datetime.strptime(fecha_nacimiento, '%Y-%m-%d').strftime('%d-%m-%Y')
+    if fecha_nacimiento is not None:
+        fecha_nacimiento = datetime.datetime.strptime(fecha_nacimiento, '%Y-%m-%d').strftime('%d-%m-%Y')
     sexo = request.form.get('agregar_usuario_sexo')
     division = request.form.get('agregar_usuario_division')
     puntos = request.form.get('agregar_usuario_puntos')
-
-    data = {'id': id, 'servidor': servidor, 'correo': correo, 'contrasena': contrasena,
-            'nombre': nombre, 'apellido': apellido, 'telefono': telefono,
-            'fecha_nacimiento': fecha_nacimiento, 'sexo': sexo, 'division': division, 'puntos': puntos
-            }
-    conn = cx_Oracle.connect("TRYNDAMERE_externo_insert", "a1234", "localhost/orcl", encoding="UTF-8")
-    cur = conn.cursor()
-    consul = """
-            agregar_usuario(:id, :servido, :correo, :contrasena, :nombre, :apellido, :telefono, :fecha_nacimiento, :sexo, :division, :puntos
-            """
-    cur.execute(consul, data)
-    return cur
-    cur.close()
-    conn.close()
-
-
+    if id is not None:
+        data = [id, servidor, correo, contrasena, nombre, apellido, telefono, fecha_nacimiento, sexo, division, puntos]
+        conn = cx_Oracle.connect("TRYNDAMERE_externo_insert", "a1234", "localhost/orcl", encoding="UTF-8")
+        cur = conn.cursor()
+        cur.execute("""ALTER SESSION SET nls_date_format = 'dd-mm-yyyy'""")
+        cur.callproc('tryndamere.agregar_usuario', data)
+        cur.execute("""commit""")
+        cur.close()
+        conn.close()
     return
+
+
+def agregar_servidor():
+    id = request.form.get('agregar_servidor_id')
+    nombre = request.form.get('agregar_servidor_nombre')
+    inaguracion = request.form.get('agregar_servidor_inaguracion')
+    if inaguracion is not None:
+        inaguracion = datetime.datetime.strptime(inaguracion, '%Y-%m-%d').strftime('%d-%m-%Y')
+    idiomas = request.form.get('agregar_servidor_idiomas')
+    ubicacion = request.form.get('agregar_servidor_ubicacion')
+    ip = request.form.get('agregar_servidor_ip')
+
+    # data = {'id': id, 'nombre': nombre, 'inaguracion': inaguracion, 'idiomas': idiomas,
+    #          'ubicacion': ubicacion, 'ip': ip}
+    if id is not None:
+        data = [id, nombre, inaguracion, idiomas, ubicacion, ip]
+        conn = cx_Oracle.connect("TRYNDAMERE_externo_insert", "a1234", "localhost/orcl", encoding="UTF-8")
+        cur = conn.cursor()
+        cur.execute("""ALTER SESSION SET nls_date_format = 'dd-mm-yyyy'""")
+        #cur.execute("""EXECUTE tryndamere.agregar_servidor(:id, :nombre, :inaguracion, :idiomas, :ubicacion, :ip)""", data)
+        #cur.callproc('tryndamere.agregar_servidor', data)
+        cur.callproc('tryndamere.agregar_servidor', data)
+        cur.execute("""commit""")
+        cur.close()
+        conn.close()
+        print(data[0], file=sys.stderr)
+    return data
+

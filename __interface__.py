@@ -52,16 +52,18 @@ def insert_home():
 def agregar_usuario():
     servidor = consultas_insert.select_servidor_id()
     division = consultas_insert.select_division_codigo()
-    etwas = render_template('agregar_usuario.html', servidor=servidor, division=division)
+    template = render_template('agregar_usuario.html', servidor=servidor, division=division)
     inserts.agregar_usuario()
     # other = request.form.get('projectFilepath')
     # print(other, file=sys.stdout)
-    return etwas
+    return template
 
 
 @app.route('/agregar_servidor.html', methods=['GET', 'POST'])
 def agregar_servidor():
-    return render_template('agregar_servidor.html')
+    template = render_template('agregar_servidor.html')
+    inserts.agregar_servidor()
+    return template
 
 
 @app.route('/agregar_rioter.html', methods=['GET', 'POST'])
@@ -109,7 +111,9 @@ def agregar_invocador():
 
 @app.route('/agregar_division.html', methods=['GET', 'POST'])
 def agregar_division():
-    return render_template('agregar_division.html')
+    template = render_template('agregar_division.html')
+    inserts.agrear_divison()
+    return template
 
 
 @app.route('/agregar_carta.html', methods=['GET', 'POST'])
